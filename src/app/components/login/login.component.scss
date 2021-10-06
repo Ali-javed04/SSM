@@ -1,0 +1,91 @@
+.bg {
+  width: 100%;
+  height: 100vh;
+   background-repeat: no-repeat;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/background.jpg') , #F5F5F5 ;
+   background-size: cover !important;
+   display: table;
+    text-align: center;
+}
+.bg-2 {
+  background: rgba(255, 255, 255, 0.86);
+box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+border-radius: 10px;
+
+}
+.main-one {
+  display: table-cell;
+  justify-content: center;
+  vertical-align: middle;
+}
+.center {
+  justify-content: center;
+}
+.border{
+  border: 1px solid #545050 !important;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 15px 0px;
+
+}
+.username {
+  width: 100%;
+    height: 100%;
+    font-family: Metal;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #A6ACBE;
+    font-family: Metal;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+}
+.username:focus {
+  outline: none;
+}
+.ps {
+  padding: 5rem
+}
+.signin {
+  font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+width: 100%;
+text-align: center;
+text-transform: uppercase;
+background: #2753FF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+border-radius: 4px;
+color: #FFFFFF;
+border: none;
+
+padding: 15px 0px;
+}
+.forget {
+  font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+display: flex;
+text-align: right;
+letter-spacing: 0.01em;
+text-decoration-line: underline;
+justify-content: right;
+cursor: pointer;
+margin: 0;
+
+color: #545050;
+}
+@media screen and (max-width: 600px) {
+  .ps {
+    padding: 2rem
+  }
+}
+.right {
+  justify-content: right;
+}

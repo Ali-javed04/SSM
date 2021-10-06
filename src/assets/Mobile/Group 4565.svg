@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="69.001" height="69.001" viewBox="0 0 69.001 69.001">
+  <defs>
+    <filter id="backgroundCircle" x="0" y="0" width="69.001" height="69.001" filterUnits="userSpaceOnUse">
+      <feOffset dy="12" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="6.5" result="blur"/>
+      <feFlood flood-color="#bfbfbf"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_4565" data-name="Group 4565" transform="translate(15265.111 9238.767)">
+    <g transform="matrix(1, 0, 0, 1, -15265.11, -9238.77)" filter="url(#backgroundCircle)">
+      <path id="backgroundCircle-2" data-name="backgroundCircle" d="M0,14.5A14.5,14.5,0,1,1,14.5,29,14.5,14.5,0,0,1,0,14.5Z" transform="translate(20 8)" fill="#214497" stroke="#e7e7e7" stroke-width="1"/>
+    </g>
+    <g id="add_black_24dp" transform="translate(-15239.999 -9225.654)">
+      <g id="Group_4320" data-name="Group 4320" transform="translate(10.293 10.069)">
+        <rect id="Rectangle_1620" data-name="Rectangle 1620" fill="none"/>
+      </g>
+      <g id="Group_4322" data-name="Group 4322">
+        <g id="Group_4321" data-name="Group 4321">
+          <path id="Path_3898" data-name="Path 3898" d="M23.776,15.729H15.729v8.047H13.047V15.729H5V13.047h8.047V5h2.682v8.047h8.047Z" transform="translate(-5 -5)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

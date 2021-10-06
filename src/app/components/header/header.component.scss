@@ -1,0 +1,54 @@
+.bell-no
+{
+    top:8px;
+    right:13px;
+}
+
+.bell
+{
+    font-size: 17px;
+    color: red;
+    right:8px;
+    top: 8px;
+}
+
+.bell-no-2
+{
+    top:9px;
+    right:11px;
+    font-size: 10px;
+}
+
+
+#nav, #logo
+{
+    transition: .7s;
+}
+
+@media (min-width: 0px)
+{
+    .top-bar
+    {
+        right: 0;
+        top: 77px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .top-bar
+    {
+        right: 0;
+        top: 88px;
+    }
+}
+.back {
+  background: #3C8DBC !important;
+
+}
+.bg-s {
+  color: white;
+}
+.right {
+  justify-content: right;
+}

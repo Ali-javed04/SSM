@@ -1,0 +1,21 @@
+
+
+<div class="d-flex" >
+  <div id="sidebar" class="position-absolute" >
+    <app-sidebar *ngIf="notShow"></app-sidebar>
+  </div>
+
+  <div class="border-start w-100 " id="main-div"[ngClass]="{rmargin: !notShow}" >
+       <app-header *ngIf="notShow"></app-header>
+      <div class="border-start" id="inner">
+        <div class="py-5" [ngClass]="{rpadding: !notShow}" >
+          <router-outlet></router-outlet>
+        </div>
+</div>
+<app-footer *ngIf="notShow"  class="footer-bottom"></app-footer>
+</div>
+</div>
+<!-- <div *ngIf="!notShow">
+  <router-outlet></router-outlet>
+</div> -->
+

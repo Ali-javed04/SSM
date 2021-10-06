@@ -1,0 +1,23 @@
+<svg id="Logo_Merchant" data-name="Logo Merchant" xmlns="http://www.w3.org/2000/svg" width="153" height="60.84" viewBox="0 0 153 60.84">
+  <text id="COiN" transform="translate(56 6.203)" fill="#214497" font-size="36.873" font-family="Lato-Bold, Lato" font-weight="700"><tspan x="0" y="36">COiN</tspan></text>
+  <g id="Group_6676" data-name="Group 6676">
+    <g id="Group_539" data-name="Group 539">
+      <g id="Group_538" data-name="Group 538">
+        <g id="Group_537" data-name="Group 537">
+          <g id="Group_536" data-name="Group 536">
+            <path id="Path_157" data-name="Path 157" d="M3008.846,2636.959a26.237,26.237,0,1,0,26.091,26.458A26.178,26.178,0,0,0,3008.846,2636.959Zm-.316,49.223a22.985,22.985,0,1,1,23.148-22.74A23.071,23.071,0,0,1,3008.53,2686.182Z" transform="translate(-2982.463 -2636.958)" fill="#fdb415"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Group_540" data-name="Group 540" transform="translate(11.988 10.372)">
+      <path id="Path_158" data-name="Path 158" d="M3022.277,2650.973a3.717,3.717,0,0,0-3.88-3.643,3.646,3.646,0,1,0-.046,7.274A3.83,3.83,0,0,0,3022.277,2650.973Z" transform="translate(-2994.451 -2647.33)" fill="#fdb415"/>
+      <path id="Path_159" data-name="Path 159" d="M3011.925,2660.309l3.912.027v8.4s-16.534-18.967-16.658-19.1a1.172,1.172,0,0,0-1.653-.069l-.054.025-.051.032c-.52.332-1.758,1.027-2.217,1.394a1.721,1.721,0,0,0-.752,1.364v.026l.091,26.155h6.985v-16.173l14.4,16.428h6.353v-23.88Z" transform="translate(-2994.451 -2647.33)" fill="#fdb415"/>
+    </g>
+    <rect id="Rectangle_58" data-name="Rectangle 58" width="2.749" height="2.471" transform="translate(39.604 25.847)" fill="#fdb415"/>
+    <rect id="Rectangle_59" data-name="Rectangle 59" width="2.749" height="2.471" transform="translate(39.604 30.666)" fill="#fdb415"/>
+    <rect id="Rectangle_60" data-name="Rectangle 60" width="2.749" height="2.471" transform="translate(9.449 25.847)" fill="#fdb415"/>
+    <rect id="Rectangle_61" data-name="Rectangle 61" width="2.749" height="2.471" transform="translate(9.449 30.666)" fill="#fdb415"/>
+  </g>
+  <text id="Merchant" transform="translate(83.645 43.84)" fill="#214497" font-size="14" font-family="Lato-Bold, Lato" font-weight="700"><tspan x="0" y="14">Merchant</tspan></text>
+</svg>

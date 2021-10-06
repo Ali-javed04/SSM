@@ -1,0 +1,124 @@
+
+<nav class="navbar navbar-expand-xl border-start border-bottom back  fixed-top bg-white" id="nav" >
+  <div  class="container-fluid ">
+    <button class="btn  d-sm-none" type="button" data-bs-toggle="offcanvas" href="#sidebar-mob">
+      <i class="fas fa-bars fa-lg text-light-navy mt-2"></i>
+    </button>
+      <a class="navbar-brand ms-md-3 mb-0" routerLink="/">
+          <img id="logo" src="/assets/logo.svg" alt="" height="60px">
+        </a>
+
+        <img src="/assets/f.svg" alt="" class="pl-4" *ngIf="openV" (click)="open('a')">
+        <img src="/assets/f.svg" alt="" class="pl-4"  *ngIf="!openV" (click)="close()">
+
+    <div class="d-xl-none">
+      <button class="btn " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+       <img src="/assets/logo.svg" height="35" class="rounded-circle" alt="">
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Action</a></li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse right" id="navbarSupportedContent">
+      <ul id="links"  class="navbar-nav me-auto mb-2 mb-lg-0 mt-2 fw-bold">
+        <li class="nav-item px-4" *ngIf="currentState('wallet')">
+          <a class="nav-link text-light-navy" routerLink="/personal">Wallet</a>
+        </li>
+        <li class="nav-item px-4" *ngIf="currentState('merchant')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business" >Merchant</a>
+
+        </li>
+        <li class="nav-item px-4" *ngIf="currentState('common')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business">United States
+            <svg id="location_on_black_24dp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path id="Path_4195" data-name="Path 4195" d="M0,0H24V24H0Z" fill="none"/>
+              <path id="Path_4196" data-name="Path 4196" d="M12,2A7,7,0,0,0,5,9c0,5.25,7,13,7,13s7-7.75,7-13A7,7,0,0,0,12,2ZM7,9A5,5,0,0,1,17,9c0,2.88-2.88,7.19-5,9.88C9.92,16.21,7,11.85,7,9Z" fill="#214497"/>
+              <circle id="Ellipse_174" data-name="Ellipse 174" cx="2.5" cy="2.5" r="2.5" transform="translate(9.5 6.5)" fill="#214497"/>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item px-4" *ngIf="currentState('common')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business">Rent</a>
+        </li>
+        <li class="nav-item px-4" *ngIf="currentState('common')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business">Buy</a>
+        </li>
+
+        <!-- search component  -->
+
+        <li class="nav-item px-4" *ngIf="currentState('specific')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business">Rent</a>
+        </li>
+        <li class="nav-item px-4" *ngIf="currentState('specific')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business">Buy</a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <li class="nav-item px-5" *ngIf="currentState('ACCOUNT')">
+          <button class="btn btn-bg" routerLink = "/linked-accounts/banking-info">Add your Bank Account</button>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item px-4" *ngIf="currentState('specific')">
+          <a class="nav-link text-light-navy pb-0 "  routerLink="/business">United States
+            <svg id="location_on_black_24dp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path id="Path_4195" data-name="Path 4195" d="M0,0H24V24H0Z" fill="none"/>
+              <path id="Path_4196" data-name="Path 4196" d="M12,2A7,7,0,0,0,5,9c0,5.25,7,13,7,13s7-7.75,7-13A7,7,0,0,0,12,2ZM7,9A5,5,0,0,1,17,9c0,2.88-2.88,7.19-5,9.88C9.92,16.21,7,11.85,7,9Z" fill="#214497"/>
+              <circle id="Ellipse_174" data-name="Ellipse 174" cx="2.5" cy="2.5" r="2.5" transform="translate(9.5 6.5)" fill="#214497"/>
+            </svg>
+          </a>
+        </li>
+
+
+        <li class="nav-item dropdown px-3">
+          <a class="" >
+            <img src="/assets/Mobile/Darko Moskovitz.svg" height="40" class="rounded-circle" alt=""> <span class="bg-s m-4">Darko Moskovitz</span>
+          </a>
+        </li>
+
+          <li class="nav-item dropdown px-3">
+
+                <img src="/assets/Line.svg" height="40"  alt="">
+
+
+            </li>
+            <li class="nav-item dropdown px-3">
+
+                <img src="/assets/Notification.svg" height="40" alt="">
+
+
+            </li>
+            <li class="nav-item dropdown px-3" (click)="logout()">
+
+                <img src="/assets/Export.svg" height="40"  alt="">
+
+
+            </li>
+
+
+        </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!-- <div class="offcanvas offcanvas-start  " tabindex="-1" id="sidebar-mob" aria-labelledby="sidebar-desktopLabel">
+  <div class="offcanvas-body">
+    <app-sidebar-mob></app-sidebar-mob>
+  </div>
+</div> -->

@@ -1,0 +1,48 @@
+<div class="containter-fluid bg">
+  <div class=" main-one">
+    <div class="row center m-0">
+      <div class="col-md-4 ps bg-2 mt-5 mb-5">
+        <div class="row">
+          <img src="/assets/ssm.svg" class="img-fluid" alt="">
+        </div>
+        <!-- 2nd one  -->
+
+        <div class="row mt-5 border">
+          <div class="col-2">
+            <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28.1089 28.8V26.1333C28.1089 24.7188 27.5317 23.3623 26.5045 22.3621C25.4772 21.3619 24.0839 20.8 22.6311 20.8H11.6755C10.2227 20.8 8.82944 21.3619 7.80216 22.3621C6.77487 23.3623 6.19775 24.7188 6.19775 26.1333V28.8" stroke="#A6ACBE" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17.1533 15.4667C20.1786 15.4667 22.6311 13.0788 22.6311 10.1333C22.6311 7.1878 20.1786 4.79999 17.1533 4.79999C14.128 4.79999 11.6755 7.1878 11.6755 10.1333C11.6755 13.0788 14.128 15.4667 17.1533 15.4667Z" stroke="#A6ACBE" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </div>
+          <div class="col-10">
+            <input type="text" class="username" placeholder="USERNAME" [(ngModel)]="username">
+          </div>
+        </div>
+             <!-- 3rd one  -->
+
+             <div class="row mt-5 border">
+              <div class="col-2">
+                <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M26.7395 15.4666H7.56726C6.05461 15.4666 4.82837 16.6605 4.82837 18.1333V27.4666C4.82837 28.9394 6.05461 30.1333 7.56726 30.1333H26.7395C28.2521 30.1333 29.4784 28.9394 29.4784 27.4666V18.1333C29.4784 16.6605 28.2521 15.4666 26.7395 15.4666Z" stroke="#A6ACBE" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10.3062 15.4666V10.1333C10.3062 8.36517 11.0276 6.66948 12.3117 5.41924C13.5958 4.16899 15.3374 3.46661 17.1534 3.46661C18.9694 3.46661 20.711 4.16899 21.9951 5.41924C23.2792 6.66948 24.0006 8.36517 24.0006 10.1333V15.4666" stroke="#A6ACBE" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
+              </div>
+              <div class="col-10">
+                <input type="password" class="username" placeholder="Password" [(ngModel)]="password">
+              </div>
+            </div>
+            <!-- 4th row  -->
+            <div class="row mt-5">
+              <button class="signin" (click)="signin()" [disabled]="!(username.length>0)  || !(password.length >0)">Sign in</button>
+            </div>
+            <!-- 5th row  -->
+            <div class="row mt-5 right">
+              <p class="forget">Forget password</p>
+            </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
