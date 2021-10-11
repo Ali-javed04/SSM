@@ -8,9 +8,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
+import { ApprovelListingComponent } from './components/approvel-listing/approvel-listing.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { RegistrationComponent } from './components/registration/registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,11 +21,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MainComponent,
     HomeComponent,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    ApprovelListingComponent,
+    RegistrationComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],

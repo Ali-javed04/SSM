@@ -40,18 +40,18 @@
 
 
     <!-- 2nd part  -->
-    <div class="row mt-5">
-      <div class="col-3">
-        <div class="card">
-          <div class="card-body">
+    <div class="row ">
+      <div class="col-3 mt-5" *ngFor="let appointment of appointments; let i = index">
+        <div class="card bg-card">
+          <div class="card-body bg-card" [ngClass]="{approved: appointment.status == 'approved' , pending: appointment.status =='pending', draft: appointment.status =='draft',rework: appointment.status =='rework' , reject: appointment.status =='reject'}">
             <div class="row px-2">
               <div class="col-10 p-0">
-              <p>KIM HUAT TRSDING</p>
+              <p class="p-0">{{appointment.name}}</p>
 
               </div>
               <div class="col-2">
 
-                <div class="dropdown" style="float:right;">
+                <div class="dropdown display-d" style="float:right;" [ngClass]="{nones1:appointment.status == 'approved',nones:appointment.status == 'pending' ,nones2:appointment.status == 'reject'}">
                   <button class="dropbtn"><img src="/assets/drop.svg" alt=""></button>
                   <div class="dropdown-content">
                   <a href="#">Edit</a>
@@ -62,14 +62,67 @@
               </div>
             </div>
             <div class="row px-2">
-              <p>12345778-P</p>
+              <p class="p-0">{{appointment.code}}</p>
             </div>
             <div class="row px-2">
-               <p>
-                 Rejected
+               <p class="status">
+                 {{appointment.status}}
                </p>
             </div>
+
+
+            <!-- hide  -->
+            <div class="hide" *ngIf="show == i ">
+              <div class="row" *ngIf="appointment.status == 'reject'">
+                <p>Reject Reason</p>
+
+              </div>
+              <div class="row bg-rej" *ngIf="appointment.status == 'reject'">
+                <div class="col-md-12">
+                  <h5>Rejected By:{{appointment.rejectedBy}}</h5>
+                </div>
+                <div class="col-md-12" >
+                  <h5>Rejected at:{{appointment.rejectedAt}}</h5>
+                </div>
+
+              </div>
+              <div class="row mt-3 bg-reason" *ngIf="appointment.status == 'reject'">
+                <h5>{{appointment.reason}}</h5>
+              </div>
+
+
+            <!-- pending  -->
+            <div class="row" *ngIf="appointment.status == 'pending'">
+              <div class="col-2">
+                <img src="/assets/pending.svg" alt="">
+
+              </div>
+              <div class="col-10">
+                <div class="row">
+                  <p class="p-0 m-0">{{appointment.istDate}}</p>
+                  <p class="p-0 m-0">Application Submittion</p>
+
+                </div>
+                <div class="row mt-2">
+                  <p class="p-0 m-0">{{secondDate}}</p>
+                  <p class="p-0 m-0">Application recieved By : {{appointment.recievedBy}}</p>
+
+                </div>
+                <div class="row mt-2">
+                  <p class="p-0 m-0">{{secondDate}}</p>
+                  <p class="p-0 m-0">Application Pending For : {{appointment.approvelby}}</p>
+                </div>
+
+              </div>
+            </div>
           </div>
+        </div>
+
+          <div class="card-footer center bg-card p-0 pt-2" [ngClass]="{approvedDown: appointment.status == 'approved' , pendingDown: appointment.status =='pending', draftDown: appointment.status =='draft',reworkDown: appointment.status =='rework' , rejectDown: appointment.status =='reject'}">
+            <img src="/assets/down.svg" alt="" (click)="expend(i)" *ngIf="show == -1">
+            <img src="/assets/up.svg" alt="" (click)="contract(i)" *ngIf="show == i && currentIndex == i ">
+          </div>
+
 
         </div>
       </div>

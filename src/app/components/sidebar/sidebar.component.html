@@ -5,36 +5,42 @@
 
 
 
-<div id="icons"  class="bg-color text-center">
+<div id="icons"  class="bg-color text-center" [ngClass]="{bgcolorR: currenturl == '/registration'}">
   <div class="  position-fixed open-btn-p">
   </div>
 
   <!-- visable bar  -->
   <div class="mb-4 pt-110">
-    <a routerLink="/" *ngIf="!currentState('common')">
+    <a routerLink="/" >
      <img src="/assets/home.svg" alt="">
     </a>
    </div>
    <div class="mb-4">
-    <a routerLink="/registration" *ngIf="!currentState('common')">
+    <a routerLink="/registration" >
       <img src="/assets/reg.svg" alt="">
     </a>
   </div>
   <div class="mb-4 ">
-    <a routerLink="/search" *ngIf="!currentState('common')">
+    <a routerLink="/search" >
       <img src="/assets/se.svg" alt="">
     </a>
   </div>
+  <div class="mb-4 ">
+    <a routerLink="/approvelListing" >
+      <img src="/assets/approve.png" alt="">
+    </a>
+  </div>
   <div class="mb-2 setting">
-    <a routerLink="/search" *ngIf="!currentState('common')">
+    <a routerLink="/search" >
       <img src="/assets/Settings.svg" alt="">
     </a>
   </div>
+>
 </div>
 
 
 <!-- extended form  -->
-<div id="icons1" class="bg-color2 bs" >
+<div id="icons1" class="bg-color2 bs" [ngClass]="{bgcolor2R: currenturl == '/registration'}" >
 <div class="position-fixed open-btn-p ">
   <img src="/assets/Newfolder/Logo Merchant.svg" class=" me-3 mt-n10" height="40" alt="">
 </div>
@@ -58,12 +64,19 @@
     <span class="m-home link-color">Search</span>
   </div>
 </a>
+<a class="link2"  routerLink="/approvelListing" >
+  <div class="d-flex mb-4 ms-4">
+    <img src="/assets/approve.png" alt="">
+    <span class="m-home link-color">Approvel Listing</span>
+  </div>
+</a>
 <a  class="setting2 link2" routerLink="/setting" >
   <div class="d-flex mb-2 ms-4">
     <img src="/assets/Settings.svg" alt="">
     <span class="m-home link-color">Settings</span>
   </div>
 </a>
+
 
 
 </div>
