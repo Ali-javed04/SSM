@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppService } from 'src/app/services/app/app.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,16 +10,10 @@ export class RegistrationComponent implements OnInit {
   mainInformation: FormGroup;
   bussinessAddress: FormGroup;
   mailingAddress: FormGroup;
-  newbranch:FormGroup;
 
   submitted = false;
-  currentStep = 'step1';
-  p: number[] = [];
-  display1 = "none"
-  display2 = "none"
-  rows: { id: string; name: string; phone: string; company: string; zip: string; city: string; date: string; country: string; }[];
-  constructor(private formBuilder: FormBuilder,
-    private appService: AppService) { }
+  currentStep = true
+  constructor(private formBuilder: FormBuilder,) { }
 
   ngOnInit(): void {
     this.mainInformation = this.formBuilder.group({
@@ -55,14 +48,6 @@ export class RegistrationComponent implements OnInit {
       mobileNo: ['', Validators.required],
       email: ['', Validators.required],
     });
-    this.newbranch = this.formBuilder.group({
-      bussinessAddress1: ['', Validators.required],
-      postcode: ['', Validators.required],
-      town: ['', Validators.required],
-      state: ['', Validators.required],
-      url: ['', Validators.required],
-    });
-    this.rows = this.appService.getData()
   }
   saveMainInformation() {
     this.submitted = true;
@@ -82,48 +67,7 @@ export class RegistrationComponent implements OnInit {
       return;
     }
   }
-  saveNewBranch() {
-    this.submitted = true;
-    if (this.newbranch.invalid) {
-      return;
-    }
-  }
   get f() { return this.mainInformation.controls; }
   get fb() { return this.bussinessAddress.controls; }
   get fbp() { return this.mailingAddress.controls; }
-  get fbps() { return this.newbranch.controls; }
-  step1() {
-    this.currentStep = 'step2'
-  }
-  step2() {
-    this.currentStep = 'step3'
-  }
-  step2Back() {
-    this.currentStep = 'step1'
-  }
-  step3() {
-    this.currentStep = 'step4'
-  }
-  step3Back() {
-    this.currentStep = 'step2'
-  }
-  step5() {
-    this.currentStep = 'step5'
-  }
-  step5Back() {
-    this.currentStep = 'step3'
-  }
-  openModal2() {
-    this.display1 = "block";
-  }
-  onCloseHandled2() {
-    this.display1 = "none";
-  }
-  openModal3() {
-    this.display2 = "block";
-  }
-  onCloseHandled3() {
-    this.display2 = "none";
-  }
-
 }

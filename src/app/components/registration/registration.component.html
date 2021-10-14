@@ -9,877 +9,256 @@
         <span class="m-3 home">Registration</span>
       </div>
     </div>
-
     <!-- 2nd part  -->
     <div class="row p-4 top-p">
 
       <div class="first col z-col">
-        <div class="icon-bg" [ngClass]="{selected: currentStep == 'step1'}"><img src="/assets/i.svg" alt="">
+        <div class="icon-bg" [ngClass]="{selected: currentStep}"><img src="/assets/i.svg" alt="">
 
         </div>
         <p class="pl-4 mt-3 p-a">Main Information</p>
       </div>
       <div class="second col z-col">
-        <div class="icon-bg" [ngClass]="{selected: currentStep == 'step2'}"><img src="/assets/b.svg" alt="">
+        <div class="icon-bg"><img src="/assets/b.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Branches</p>
       </div>
       <div class="third col z-col">
-        <div class="icon-bg" [ngClass]="{selected: currentStep == 'step3'}"><img src="/assets/bc.svg" alt="">
+        <div class="icon-bg"><img src="/assets/bc.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Bussiness Code</p>
       </div>
       <div class="fourth col z-col">
-        <div class="icon-bg" [ngClass]="{selected: currentStep == 'step4'}"><img src="/assets/o.svg" alt="">
+        <div class="icon-bg"><img src="/assets/o.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Owner</p>
       </div>
       <div class="fifth col z-col">
-        <div class="icon-bg" [ngClass]="{selected: currentStep == 'step5'}"><img src="/assets/fee.svg" alt="">
+        <div class="icon-bg"><img src="/assets/fee.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Fee & Declation</p>
       </div>
       <div class="col-11 borders-p">
       </div>
     </div>
-    <div class="step1" *ngIf="currentStep  == 'step1'">
-      <!-- 3rd part  -->
-      <div class="row">
-        <div class="col-md-12 card p-0">
-          <div class="card-header bg-header">
-            <h5>Main Information</h5>
+    <!-- 3rd part  -->
+    <div class="row">
+      <div class="col-md-12 card p-0">
+        <div class="card-header bg-header">
+          <h5>Main Information</h5>
 
-          </div>
-          <div class="card-body">
-            <div class="col-md-12">
-              <form [formGroup]="mainInformation" class="" (ngSubmit)="saveMainInformation()">
-                <!-- ist row -->
-                <div class="form-row">
-                  <div class="form-group col">
-                    <label>Application Type <img class="ml-1" src="/assets/req.svg"> </label>
-                    <select formControlName="applicationType" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.applicationType.errors }">
-                      <option [value]="" disabled selected>select your Application Type</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.applicationType.errors" class="invalid-feedback">
-                      <div *ngIf="f.applicationType.required">Application Type is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group col">
-                    <label>Business Type <img class="ml-1" src="/assets/req.svg"> </label>
-                    <select formControlName="businessType" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.businessType.errors }">
-                      <option [value]="" disabled selected>select your Business Type</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.businessType.errors" class="invalid-feedback">
-                      <div *ngIf="f.businessType.required">Business Type is required</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col">
-                    <label for="first_name">Bussiness Name <img class="ml-1" src="/assets/req.svg"> </label>
-                    <input type="text" formControlName="bussinessName" class="form-control bg-input" id="first_name"
-                      [ngClass]="{ 'is-invalid': submitted && f.bussinessName.errors }" placeholder="Bussiness Name" />
-                    <div *ngIf="submitted && f.bussinessName.errors" class="invalid-feedback">
-                      <div *ngIf="f.bussinessName.errors.required">Bussiness Name is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group col">
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <label for="first_name">Business Start Date <img class="ml-1" src="/assets/req.svg"> </label>
-                        <input type="date" formControlName="businessStartDate" class="form-control bg-input"
-                          id="first_name" [ngClass]="{ 'is-invalid': submitted && f.businessStartDate.errors }"
-                          placeholder="Business Start Date" />
-                        <div *ngIf="submitted && f.businessStartDate.errors" class="invalid-feedback">
-                          <div *ngIf="f.businessStartDate.errors.required">Business Start Date is required</div>
-                        </div>
-                      </div>
-                      <div class="form-group col">
-                        <label for="first_name">Partnership Agreement Date <img class="ml-1" src="/assets/req.svg">
-                        </label>
-                        <input type="text" formControlName="partnershipAgreementDate" class="form-control bg-input"
-                          id="first_name" [ngClass]="{ 'is-invalid': submitted && f.partnershipAgreementDate.errors }"
-                          placeholder="Partnership Agreement Date" />
-                        <div *ngIf="submitted && f.partnershipAgreementDate.errors" class="invalid-feedback">
-                          <div *ngIf="f.partnershipAgreementDate.errors.required">Partnership Agreement Date is required
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col">
-                    <label>Incentive (Usahawan B40 / Pelajar IPT / OKU) <img class="ml-1" src="/assets/req.svg">
-                    </label>
-                    <select formControlName="incentive" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.incentive.errors }">
-                      <option [value]="" disabled selected>Incentive (Usahawan B40 / Pelajar IPT / OKU)</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.incentive.errors" class="invalid-feedback">
-                      <div *ngIf="f.incentive.required">Incentive (Usahawan B40 / Pelajar IPT / OKU) is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group col">
-                    <label>Registration Period <img class="ml-1" src="/assets/req.svg"> </label>
-                    <select formControlName="registrationPeriod" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.registrationPeriod.errors }">
-                      <option [value]="" disabled selected>Registration Period</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.registrationPeriod.errors" class="invalid-feedback">
-                      <div *ngIf="f.registrationPeriod.required">Registration Period is required</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col">
-                    <label>Business Info <img class="ml-1" src="/assets/req.svg"> </label>
-                    <select formControlName="businessInfo" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.businessInfo.errors }">
-                      <option [value]="" disabled selected>Business Info</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.businessInfo.errors" class="invalid-feedback">
-                      <div *ngIf="f.businessInfo.required">Business Info is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group col">
-                    <label for="first_name">Status <img class="ml-1" src="/assets/req.svg"> </label>
-                    <input type="text" formControlName="status" class="form-control bg-input" id="first_name"
-                      [ngClass]="{ 'is-invalid': submitted && f.status.errors }" placeholder="Status" />
-                    <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
-                      <div *ngIf="f.status.errors.required">Status is required</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col">
-                    <label>Incubator <img class="ml-1" src="/assets/req.svg"> </label>
-                    <select formControlName="incubator" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.incubator.errors }">
-                      <option [value]="" disabled selected>Incubator</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.incubator.errors" class="invalid-feedback">
-                      <div *ngIf="f.incubator.required">Incubator is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group col">
-                    <label>Is Online Seller? <img class="ml-1" src="/assets/req.svg"> </label>
-                    <select formControlName="isOnlineSeller" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && f.isOnlineSeller.errors }">
-                      <option [value]="" disabled selected>Is Online Seller?</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                    <div *ngIf="submitted && f.isOnlineSeller.errors" class="invalid-feedback">
-                      <div *ngIf="f.isOnlineSeller.required">Is Online Seller? is required</div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
         </div>
-      </div>
-
-
-      <!-- fourth part  -->
-
-      <div class="row p-0 mt-5 mb-5">
-        <div class="col-md-6 pl-0 m-0">
-          <div class="card p-0">
-            <div class="card-header bg-header">
-              <h5>Bussiness Address</h5>
-
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <button class="btn btn-primary ml-4"> Copy from Profile Address</button>
-              </div>
-              <div class="col-md-12">
-                <form [formGroup]="bussinessAddress" class="" (ngSubmit)="saveBussinessAddress()">
-                  <!-- ist row -->
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label for="first_name">Bussiness Address <img class="ml-1" src="/assets/req.svg"> </label>
-                      <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                        id="first_Address" [ngClass]="{ 'is-invalid': submitted && fb.bussinessAddress1.errors }"
-                        placeholder="Bussiness Address" />
-                      <div *ngIf="submitted && fb.bussinessAddress1.errors" class="invalid-feedback">
-                        <div *ngIf="fb.bussinessAddress1.errors.required">Bussiness Address is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                        id="first_Address" [ngClass]="{ 'is-invalid': submitted && fb.bussinessAddress1.errors }"
-                        placeholder="Bussiness Address" />
-                      <div *ngIf="submitted && fb.bussinessAddress1.errors" class="invalid-feedback">
-                        <div *ngIf="fb.bussinessAddress1.errors.required">Bussiness Address is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                        id="first_Address" [ngClass]="{ 'is-invalid': submitted && fb.bussinessAddress1.errors }"
-                        placeholder="Bussiness Address" />
-                      <div *ngIf="submitted && fb.bussinessAddress1.errors" class="invalid-feedback">
-                        <div *ngIf="fb.bussinessAddress1.errors.required">Bussiness Address is required</div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <div class="form-row">
-                        <div class="form-group col">
-                          <label for="first_name">Postcode <img class="ml-1" src="/assets/req.svg"> </label>
-                          <input type="text" formControlName="postcode" class="form-control bg-input" id="first_name"
-                            [ngClass]="{ 'is-invalid': submitted && fb.postcode.errors }" placeholder="Postcode" />
-                          <div *ngIf="submitted && fb.postcode.errors" class="invalid-feedback">
-                            <div *ngIf="fb.postcode.errors.required">Postcode is required</div>
-                          </div>
-                        </div>
-                        <div class="form-group col">
-                          <label>Town <img class="ml-1" src="/assets/req.svg"> </label>
-                          <select formControlName="town" class="form-control bg-input"
-                            [ngClass]="{ 'is-invalid': submitted && fb.town.errors }">
-                            <option [value]="" disabled selected>Town</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                          </select>
-                          <div *ngIf="submitted && fb.town.errors" class="invalid-feedback">
-                            <div *ngIf="fb.town.required">Town is required</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label>State <img class="ml-1" src="/assets/req.svg"> </label>
-                      <select formControlName="state" class="form-control bg-input"
-                        [ngClass]="{ 'is-invalid': submitted && fb.state.errors }">
-                        <option [value]="" disabled selected>State</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                      </select>
-                      <div *ngIf="submitted && fb.state.errors" class="invalid-feedback">
-                        <div *ngIf="fb.state.required">State is required</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <div class="form-row">
-                        <div class="form-group col">
-                          <label for="first_name">Tel No <img class="ml-1" src="/assets/req.svg"> </label>
-                          <input type="text" formControlName="telNo" class="form-control bg-input" id="first_name"
-                            [ngClass]="{ 'is-invalid': submitted && fb.telNo.errors }" placeholder="Tel No" />
-                          <div *ngIf="submitted && fb.telNo.errors" class="invalid-feedback">
-                            <div *ngIf="fb.telNo.errors.required">Tel No is required</div>
-                          </div>
-                        </div>
-                        <div class="form-group col">
-                          <label>Mobile No <img class="ml-1" src="/assets/req.svg"> </label>
-                          <select formControlName="mobileNo" class="form-control bg-input"
-                            [ngClass]="{ 'is-invalid': submitted && fb.mobileNo.errors }">
-                            <option [value]="" disabled selected>Mobile No</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                          </select>
-                          <div *ngIf="submitted && fb.mobileNo.errors" class="invalid-feedback">
-                            <div *ngIf="fb.mobileNo.required">Mobile No is required</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label for="first_name">Email <img class="ml-1" src="/assets/req.svg"> </label>
-                      <input type="text" formControlName="email" class="form-control bg-input" id="first_name"
-                        [ngClass]="{ 'is-invalid': submitted && fb.email.errors }" placeholder="Email" />
-                      <div *ngIf="submitted && fb.email.errors" class="invalid-feedback">
-                        <div *ngIf="fb.email.errors.required">Email is required</div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label for="first_name">URL (Website, FB, etc) <img class="ml-1" src="/assets/req.svg"> </label>
-                      <input type="text" formControlName="url" class="form-control bg-input" id="first_name"
-                        [ngClass]="{ 'is-invalid': submitted && fb.url.errors }" placeholder="URL (Website, FB, etc)" />
-                      <div *ngIf="submitted && fb.url.errors" class="invalid-feedback">
-                        <div *ngIf="fb.url.errors.required">URL (Website, FB, etc) is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- fifth part  -->
-
-
-
-
-        <div class="col-md-6 pr-0 m-0">
-          <div class="card p-0">
-            <div class="card-header bg-header">
-              <h5>Bussiness Address</h5>
-
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <button class="btn btn-primary ml-4"> Copy from Bussiness Address</button>
-              </div>
-              <div class="col-md-12">
-                <form [formGroup]="mailingAddress" class="" (ngSubmit)="saveMailingAddress()">
-                  <!-- ist row -->
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label for="first_name">Bussiness Address <img class="ml-1" src="/assets/req.svg"> </label>
-                      <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                        id="first_Address" [ngClass]="{ 'is-invalid': submitted && fbp.bussinessAddress1.errors }"
-                        placeholder="Bussiness Address" />
-                      <div *ngIf="submitted && fbp.bussinessAddress1.errors" class="invalid-feedback">
-                        <div *ngIf="fbp.bussinessAddress1.errors.required">Bussiness Address is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                        id="first_Address" [ngClass]="{ 'is-invalid': submitted && fbp.bussinessAddress1.errors }"
-                        placeholder="Bussiness Address" />
-                      <div *ngIf="submitted && fbp.bussinessAddress1.errors" class="invalid-feedback">
-                        <div *ngIf="fbp.bussinessAddress1.errors.required">Bussiness Address is required</div>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                        id="first_Address" [ngClass]="{ 'is-invalid': submitted && fbp.bussinessAddress1.errors }"
-                        placeholder="Bussiness Address" />
-                      <div *ngIf="submitted && fbp.bussinessAddress1.errors" class="invalid-feedback">
-                        <div *ngIf="fbp.bussinessAddress1.errors.required">Bussiness Address is required</div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <div class="form-row">
-                        <div class="form-group col">
-                          <label for="first_name">Postcode <img class="ml-1" src="/assets/req.svg"> </label>
-                          <input type="text" formControlName="postcode" class="form-control bg-input" id="first_name"
-                            [ngClass]="{ 'is-invalid': submitted && fbp.postcode.errors }" placeholder="Postcode" />
-                          <div *ngIf="submitted && fbp.postcode.errors" class="invalid-feedback">
-                            <div *ngIf="fbp.postcode.errors.required">Postcode is required</div>
-                          </div>
-                        </div>
-                        <div class="form-group col">
-                          <label>Town <img class="ml-1" src="/assets/req.svg"> </label>
-                          <select formControlName="town" class="form-control bg-input"
-                            [ngClass]="{ 'is-invalid': submitted && fbp.town.errors }">
-                            <option [value]="" disabled selected>Town</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                          </select>
-                          <div *ngIf="submitted && fbp.town.errors" class="invalid-feedback">
-                            <div *ngIf="fbp.town.required">Town is required</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label>State <img class="ml-1" src="/assets/req.svg"> </label>
-                      <select formControlName="state" class="form-control bg-input"
-                        [ngClass]="{ 'is-invalid': submitted && fbp.state.errors }">
-                        <option [value]="" disabled selected>State</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                      </select>
-                      <div *ngIf="submitted && fbp.state.errors" class="invalid-feedback">
-                        <div *ngIf="fbp.state.required">State is required</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <div class="form-row">
-                        <div class="form-group col">
-                          <label for="first_name">Tel No <img class="ml-1" src="/assets/req.svg"> </label>
-                          <input type="text" formControlName="telNo" class="form-control bg-input" id="first_name"
-                            [ngClass]="{ 'is-invalid': submitted && fbp.telNo.errors }" placeholder="Tel No" />
-                          <div *ngIf="submitted && fbp.telNo.errors" class="invalid-feedback">
-                            <div *ngIf="fbp.telNo.errors.required">Tel No is required</div>
-                          </div>
-                        </div>
-                        <div class="form-group col">
-                          <label>Mobile No <img class="ml-1" src="/assets/req.svg"> </label>
-                          <select formControlName="mobileNo" class="form-control bg-input"
-                            [ngClass]="{ 'is-invalid': submitted && fbp.mobileNo.errors }">
-                            <option [value]="" disabled selected>Mobile No</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                          </select>
-                          <div *ngIf="submitted && fbp.mobileNo.errors" class="invalid-feedback">
-                            <div *ngIf="fbp.mobileNo.required">Mobile No is required</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col">
-                      <label for="first_name">Email <img class="ml-1" src="/assets/req.svg"> </label>
-                      <input type="text" formControlName="email" class="form-control bg-input" id="first_name"
-                        [ngClass]="{ 'is-invalid': submitted && fbp.email.errors }" placeholder="Email" />
-                      <div *ngIf="submitted && fbp.email.errors" class="invalid-feedback">
-                        <div *ngIf="fbp.email.errors.required">Email is required</div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-row specific-one">
-                    <div class="form-group col">
-                    </div>
-
-
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- last one  -->
-
-      <div class="row mt-5 mb-5 right p-0 m-0">
-        <button class="btn btn-primary btn-nb" type="submit" (click)="step1()">Next</button>
-      </div>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- 2nd step  -->
-    <div class="step2" *ngIf="currentStep == 'step2'">
-      <div class="row">
-        <div class="col-md-12 card p-0">
-          <div class="card-header bg-header">
-            <h5>Branches</h5>
-          </div>
-          <div class="card-body">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="row search">
-                    <div class="col-1 icon">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect width="20" height="20" fill="url(#pattern0)" />
-                        <defs>
-                          <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0" transform="scale(0.02)" />
-                          </pattern>
-                          <image id="image0" width="50" height="50"
-                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAE/ElEQVRoge2YTWxUVRTHf+fNDB8pEGirQlwAC8XED9yZIFiGajUDscWWCe20xBgx0WhCYEdCUjQh0Y0RMaZhAWno1Dw6iR8IaJhOKguSigkLF0aNCoViTSkJBmhh5h4XtDjvzZvpzLwxrUn/u/u/955zfjP3vnffhTnNaU6FJOVO7LYHVgcs87KFPqnKchV5UGAcMVcwXCFgnVm64HYqEolMVLLgfCoJpLOz03r0iboO0N3AU0VMuYGQUHR/rLn+YnklFqeiQeJ2fx0WBykOwK0JVA8FdeG+aHTd7TLmT6uiQHoS/W+IcggI+cx3IWgyjdHoC5d8xsnRtCDx46kPEd2Vp3tI4JSK/IwyIphFiqxAWY/wHBD0mHMVZFNbS/gnX5W7VBAknki+g8rB3FlyTgx7t7dsHBAR9Zpr26er01ZoN8guoMrZq7/oxLxnYrEN18sv3VVSvo7JPXEG56+aUWRPrCX8UbEJehLJlaLyOfB0tq/wbVtz+KV8P0SpsrzMzs5Oa3JjOyBAt5YCARBrrr+YvnV3PcJAti/QEO9LbS29ZG95gtx7xDqfTorsaWup/6qcJDt2vHiTCWkR+D3bF+FAKpXy2kclyxNk8j2RnfFcW/PG3L1SgtrawqMG3nbZa4ZHdbOfuFPKAem2B1bj+jfEsLcSaznWsukkyFlHAaJNfuOCB0gwkG50WUPbWzYOuMeVKxU95mzLFtu2A37jei2txx0t4WSlniwAVjB9wmEotSZUs8p33BzHyIrsphj91W+SbLU2Ngwr3Mr2NC3/AYjFckcSsf70m8QtgavOHLLYb8xcEOWmM6lZ5DeJh5yFW+aG34C5IKLD2U3FudT8qqvrfAiodZhGRvzGzQFRtS47Ddb7TZKtxcturHPlzZjx8SG/cXNAxCLpNNhg26er/Sb6N540udqD7e2Ryi+tpQtup4DswKF7p1j/su3vHkD0NYeperoSsXNAIpHIBELC6cqunkRypd9kGSu9H1iSZd2RYOCI37iQ56yl6H4g+9KgSlS+6O7+psprfDHqTSQ7FN50mMKR1qY63/sD8oDEmusvonrIZa8NVoW+jsdTtV5zCqk3kexQlcMueyyY0fdKjZVPeU6/ENSF+4DzDlOpk3k62NPXHykmeDyequ3pS32qKt3AfEcoZWc0Wn+ljJo9VfBT17aTD6ct+R7weJfIWRU9ZgXTJ1obG+6/e7q6zoeWVP/9rELj5MZekjuXMSOytr05fNmjryxNf/nQl3oMzJcgj+Qbo3DLghGFhcBD08QdA6qBvxCGAET5IWBG34pGo5kS67+v4q6Des4uY/7dzwQayk0EjKmyUy0ZtFQvADWu/t6gGe0oF6akm8ae4/2viHAAWFPCtDsCRwNG353aE/G+/h9xfy7cU9kwJd/9plKp4PCobrZEm1RkC4rXUyyDyKAaPWWFAkfdj9gCIFAmTNmX2AC2bQdMqGaVUVZiZBmWXsfIiBkfHyp07IgnkodReb1A6JJhfIGUK9u2A2mr5ihIe74xInJ8eTVt4XA4XUzMGQGBysPMGAhUFmZGQaByMDMOApWBmRUg4B9m1oCAP5i8p9+ZUDQazQTNtVeB3nxjVHXb1Wv6vtufVSAwBTPaAc6r1SkpXFIxn7j9WbW0suW1zBQuISYca37+N/f4WQsCTphCEDDLQWAKpvYDCcjHrVvDf8x0PXOa0/9V/wDvT+QlXiloNgAAAABJRU5ErkJggg==" />
-                        </defs>
-                      </svg>
-
-                    </div>
-                    <div class="col-11 p-0 m-0">
-                      <input type="text" placeholder="search" class="form-control i-s" name="" id="">
-                    </div>
-
-                  </div>
-                </div>
-                <div class="col-md-4 right">
-                  <button class="btn btn-primary" (click)="openModal2()">
-                    + Add Branch
-                  </button>
-                </div>
-              </div>
-              <!-- 3rd part  -->
-              <div class="row mt-5">
-                <table class="table table-hover">
-                  <thead class="bg-thead">
-                    <tr class="text-center">
-                      <th>
-                        <input type="checkbox" name="" id="">
-                      </th>
-                      <th> ENTITYNAME</th>
-                      <th>TYPE</th>
-                      <th>STSTUS</th>
-                      <th>SUBMITTED DATE</th>
-                      <th>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    <tr *ngFor="let item of rows | paginate: { itemsPerPage: 10, currentPage: p }" class="abc">
-                      <td><input type="checkbox"></td>
-                      <td>{{item.name}}</td>
-                      <td>{{item.zip}}</td>
-                      <td>
-                        <span class="status-table">{{item.city}}</span>
-                      </td>
-                      <td>{{item.date}}</td>
-                      <td>
-                        <span class="bg-icon ml-1"> <img src="/assets/Eye.svg" alt=""></span>
-                        <span class="bg-icon ml-1"> <img src="/assets/Pencil.svg" alt=""></span>
-                        <span class="bg-icon ml-1"> <img src="/assets/lock.svg" alt=""></span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="row right">
-                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 4th part  -->
-        <div class="row right mt-5 mb-5 p-0 m-0">
-          <button class="btn btn-primary ml-3" (click)="step2Back()">
-            <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0.571533 21.8514V1.14826C0.571533 0.825994 0.872873 0.562322 1.24118 0.562322H3.91975C4.28805 0.562322 4.58939 0.825994 4.58939 1.14826V9.76154L15.499 0.92365C16.6485 0.0886889 18.4287 0.786931 18.4287 2.12482V20.8748C18.4287 22.2127 16.6485 22.911 15.499 22.076L4.58939 13.2918V21.8514C4.58939 22.1737 4.28805 22.4373 3.91975 22.4373H1.24118C0.872873 22.4373 0.571533 22.1737 0.571533 21.8514Z"
-                fill="white" />
-            </svg>
-          </button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step2Back()">Back</button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step2()">Next</button>
-        </div>
-      </div>
-
-
-    </div>
-
-    <!-- 3rd step  -->
-    <div class="step3" *ngIf="currentStep == 'step3'">
-      <div class="row">
-        <div class="col-md-12 card p-0">
-          <div class="card-header bg-header">
-            <h5>Bussiness Code</h5>
-          </div>
-          <div class="card-body">
-            <div class="col-md-12">
-              <!-- ist part  -->
+        <div class="card-body">
+          <div class="col-md-12">
+            <form [formGroup]="mainInformation" class="" (ngSubmit)="saveMainInformation()">
+              <!-- ist row -->
               <div class="form-row">
-                <div class="form-group">
-                  <label>Type Of Bussiness <img src="/assets/req.svg" alt=""></label>
-                  <textarea name="" id="" cols="140" rows="10" class="form-control"></textarea>
+                <div class="form-group col">
+                  <label>Application Type <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="applicationType" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.applicationType.errors }">
+                    <option [value]="" disabled selected>select your Application Type</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.applicationType.errors" class="invalid-feedback">
+                    <div *ngIf="f.applicationType.required">Application Type is required</div>
+                  </div>
                 </div>
-
-              </div>
-              <div class="row">
-                <p class="terms">You have 1500 characters remaining for your description.</p>
-              </div>
-
-              <!-- 2nd part  -->
-              <div class="row">
-                <div class="col-md-8">
-                </div>
-                <div class="col-md-4 right">
-                  <button class="btn btn-primary" (click)="openModal3()">
-                    + Add Bussiness Code
-                  </button>
-                </div>
-              </div>
-              <div class="row">
-                <p class="choose-one">* Please add at least one business code</p>
-              </div>
-              <!-- 3rd part  -->
-              <div class="row">
-                <table class="table table-hover">
-                  <thead class="bg-thead">
-                    <tr class="text-center">
-
-                      <th>NO</th>
-                      <th>BUSSINESSCODE</th>
-                      <th>DESCRIPTION</th>
-                      <th>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    <tr *ngFor="let item of rows | paginate: { itemsPerPage: 3, currentPage: p }" class="abc">
-                      <td>{{item.id}}</td>
-                      <td>{{item.name}}</td>
-                      <td>{{item.zip}}</td>
-
-                      <td>
-
-                        <span class="bg-icon ml-1"> <img src="/assets/del.svg" alt=""></span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="row right">
-                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <div class="form-group col">
+                  <label>Business Type <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="businessType" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.businessType.errors }">
+                    <option [value]="" disabled selected>select your Business Type</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.businessType.errors" class="invalid-feedback">
+                    <div *ngIf="f.businessType.required">Business Type is required</div>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="first_name">Bussiness Name <img class="ml-1" src="/assets/req.svg" > </label>
+                  <input type="text" formControlName="bussinessName" class="form-control bg-input" id="first_name"
+                    [ngClass]="{ 'is-invalid': submitted && f.bussinessName.errors }" placeholder="Bussiness Name" />
+                  <div *ngIf="submitted && f.bussinessName.errors" class="invalid-feedback">
+                    <div *ngIf="f.bussinessName.errors.required">Bussiness Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <div class="form-row">
+                    <div class="form-group col">
+                      <label for="first_name">Business Start Date <img class="ml-1" src="/assets/req.svg" > </label>
+                      <input type="date" formControlName="businessStartDate" class="form-control bg-input" id="first_name"
+                        [ngClass]="{ 'is-invalid': submitted && f.businessStartDate.errors }" placeholder="Business Start Date" />
+                      <div *ngIf="submitted && f.businessStartDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.businessStartDate.errors.required">Business Start Date is required</div>
+                      </div>
+                    </div>
+                    <div class="form-group col">
+                      <label for="first_name">Partnership Agreement Date <img class="ml-1" src="/assets/req.svg" > </label>
+                      <input type="text" formControlName="partnershipAgreementDate" class="form-control bg-input" id="first_name"
+                        [ngClass]="{ 'is-invalid': submitted && f.partnershipAgreementDate.errors }" placeholder="Partnership Agreement Date" />
+                      <div *ngIf="submitted && f.partnershipAgreementDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.partnershipAgreementDate.errors.required">Partnership Agreement Date is required</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col">
+                  <label>Incentive (Usahawan B40 / Pelajar IPT / OKU) <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="incentive" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.incentive.errors }">
+                    <option [value]="" disabled selected>Incentive (Usahawan B40 / Pelajar IPT / OKU)</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.incentive.errors" class="invalid-feedback">
+                    <div *ngIf="f.incentive.required">Incentive (Usahawan B40 / Pelajar IPT / OKU) is required</div>
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <label>Registration Period <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="registrationPeriod" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.registrationPeriod.errors }">
+                    <option [value]="" disabled selected>Registration Period</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.registrationPeriod.errors" class="invalid-feedback">
+                    <div *ngIf="f.registrationPeriod.required">Registration Period is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col">
+                  <label>Business Info <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="businessInfo" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.businessInfo.errors }">
+                    <option [value]="" disabled selected>Business Info</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.businessInfo.errors" class="invalid-feedback">
+                    <div *ngIf="f.businessInfo.required">Business Info is required</div>
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <label for="first_name">Status <img class="ml-1" src="/assets/req.svg" > </label>
+                  <input type="text" formControlName="status" class="form-control bg-input" id="first_name"
+                    [ngClass]="{ 'is-invalid': submitted && f.status.errors }" placeholder="Status" />
+                  <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                    <div *ngIf="f.status.errors.required">Status is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col">
+                  <label>Incubator <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="incubator" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.incubator.errors }">
+                    <option [value]="" disabled selected>Incubator</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.incubator.errors" class="invalid-feedback">
+                    <div *ngIf="f.incubator.required">Incubator is required</div>
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <label>Is Online Seller? <img class="ml-1" src="/assets/req.svg" > </label>
+                  <select formControlName="isOnlineSeller" class="form-control bg-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.isOnlineSeller.errors }">
+                    <option [value]="" disabled selected>Is Online Seller?</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="submitted && f.isOnlineSeller.errors" class="invalid-feedback">
+                    <div *ngIf="f.isOnlineSeller.required">Is Online Seller? is required</div>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
-        </div>
-        <!-- 4th part  -->
-        <div class="row right mt-5 mb-5 p-0 m-0">
-          <button class="btn btn-primary ml-3" (click)="step3Back()">
-            <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0.571533 21.8514V1.14826C0.571533 0.825994 0.872873 0.562322 1.24118 0.562322H3.91975C4.28805 0.562322 4.58939 0.825994 4.58939 1.14826V9.76154L15.499 0.92365C16.6485 0.0886889 18.4287 0.786931 18.4287 2.12482V20.8748C18.4287 22.2127 16.6485 22.911 15.499 22.076L4.58939 13.2918V21.8514C4.58939 22.1737 4.28805 22.4373 3.91975 22.4373H1.24118C0.872873 22.4373 0.571533 22.1737 0.571533 21.8514Z"
-                fill="white" />
-            </svg>
-          </button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step3Back()">Back</button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step3()">Next</button>
         </div>
       </div>
     </div>
 
 
-    <!-- 4th step  -->
-    <div class="step4" *ngIf="currentStep == 'step4'">
-      <div class="row">
-        <div class="col-md-12 card p-0">
+    <!-- fourth part  -->
+
+    <div class="row p-0 mt-5 mb-5">
+      <div class="col-md-6 pl-0 m-0">
+        <div class="card p-0">
           <div class="card-header bg-header">
-            <h5>Owner Information</h5>
+            <h5>Bussiness Address</h5>
+
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-md-8">
-                <div class="row search">
-                  <div class="col-1 icon">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink">
-                      <rect width="20" height="20" fill="url(#pattern0)" />
-                      <defs>
-                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                          <use xlink:href="#image0" transform="scale(0.02)" />
-                        </pattern>
-                        <image id="image0" width="50" height="50"
-                          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAE/ElEQVRoge2YTWxUVRTHf+fNDB8pEGirQlwAC8XED9yZIFiGajUDscWWCe20xBgx0WhCYEdCUjQh0Y0RMaZhAWno1Dw6iR8IaJhOKguSigkLF0aNCoViTSkJBmhh5h4XtDjvzZvpzLwxrUn/u/u/955zfjP3vnffhTnNaU6FJOVO7LYHVgcs87KFPqnKchV5UGAcMVcwXCFgnVm64HYqEolMVLLgfCoJpLOz03r0iboO0N3AU0VMuYGQUHR/rLn+YnklFqeiQeJ2fx0WBykOwK0JVA8FdeG+aHTd7TLmT6uiQHoS/W+IcggI+cx3IWgyjdHoC5d8xsnRtCDx46kPEd2Vp3tI4JSK/IwyIphFiqxAWY/wHBD0mHMVZFNbS/gnX5W7VBAknki+g8rB3FlyTgx7t7dsHBAR9Zpr26er01ZoN8guoMrZq7/oxLxnYrEN18sv3VVSvo7JPXEG56+aUWRPrCX8UbEJehLJlaLyOfB0tq/wbVtz+KV8P0SpsrzMzs5Oa3JjOyBAt5YCARBrrr+YvnV3PcJAti/QEO9LbS29ZG95gtx7xDqfTorsaWup/6qcJDt2vHiTCWkR+D3bF+FAKpXy2kclyxNk8j2RnfFcW/PG3L1SgtrawqMG3nbZa4ZHdbOfuFPKAem2B1bj+jfEsLcSaznWsukkyFlHAaJNfuOCB0gwkG50WUPbWzYOuMeVKxU95mzLFtu2A37jei2txx0t4WSlniwAVjB9wmEotSZUs8p33BzHyIrsphj91W+SbLU2Ngwr3Mr2NC3/AYjFckcSsf70m8QtgavOHLLYb8xcEOWmM6lZ5DeJh5yFW+aG34C5IKLD2U3FudT8qqvrfAiodZhGRvzGzQFRtS47Ddb7TZKtxcturHPlzZjx8SG/cXNAxCLpNNhg26er/Sb6N540udqD7e2Ryi+tpQtup4DswKF7p1j/su3vHkD0NYeperoSsXNAIpHIBELC6cqunkRypd9kGSu9H1iSZd2RYOCI37iQ56yl6H4g+9KgSlS+6O7+psprfDHqTSQ7FN50mMKR1qY63/sD8oDEmusvonrIZa8NVoW+jsdTtV5zCqk3kexQlcMueyyY0fdKjZVPeU6/ENSF+4DzDlOpk3k62NPXHykmeDyequ3pS32qKt3AfEcoZWc0Wn+ljJo9VfBT17aTD6ct+R7weJfIWRU9ZgXTJ1obG+6/e7q6zoeWVP/9rELj5MZekjuXMSOytr05fNmjryxNf/nQl3oMzJcgj+Qbo3DLghGFhcBD08QdA6qBvxCGAET5IWBG34pGo5kS67+v4q6Des4uY/7dzwQayk0EjKmyUy0ZtFQvADWu/t6gGe0oF6akm8ae4/2viHAAWFPCtDsCRwNG353aE/G+/h9xfy7cU9kwJd/9plKp4PCobrZEm1RkC4rXUyyDyKAaPWWFAkfdj9gCIFAmTNmX2AC2bQdMqGaVUVZiZBmWXsfIiBkfHyp07IgnkodReb1A6JJhfIGUK9u2A2mr5ihIe74xInJ8eTVt4XA4XUzMGQGBysPMGAhUFmZGQaByMDMOApWBmRUg4B9m1oCAP5i8p9+ZUDQazQTNtVeB3nxjVHXb1Wv6vtufVSAwBTPaAc6r1SkpXFIxn7j9WbW0suW1zBQuISYca37+N/f4WQsCTphCEDDLQWAKpvYDCcjHrVvDf8x0PXOa0/9V/wDvT+QlXiloNgAAAABJRU5ErkJggg==" />
-                      </defs>
-                    </svg>
-
-                  </div>
-                  <div class="col-11 p-0 m-0">
-                    <input type="text" placeholder="search" class="form-control i-s" name="" id="">
-                  </div>
-
-                </div>
-              </div>
-              <div class="col-md-4 right">
-                <button class="btn btn-primary">
-                  + Add Selected Code
-                </button>
-              </div>
+              <button class="btn btn-primary ml-4"> Copy from Profile Address</button>
             </div>
-            <!-- table  -->
-            <div class="row mt-4">
-              <table class="table table-hover">
-                <thead class="bg-thead">
-                  <tr class="text-center">
-
-                    <th>NO</th>
-                    <th>NAME</th>
-                    <th>ID NO</th>
-                    <th>STATUS</th>
-                    <th>ACTION</th>
-                  </tr>
-                </thead>
-                <tbody class="text-center">
-                  <tr *ngFor="let item of rows | paginate: { itemsPerPage: 3, currentPage: p }" class="abc">
-                    <td>{{item.id}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.city}}</td>
-                    <td>{{item.zip}}</td>
-
-                    <td>
-
-                      <span class="bg-icon ml-1"> <img src="/assets/Pencil.svg" alt=""></span>
-                      <span class="bg-icon ml-1"> <img src="/assets/del.svg" alt=""></span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="row right">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-      <!-- 2nd part  -->
-      <div class="row mt-5">
-        <div class="col-md-12 card p-0">
-          <div class="card-header bg-header">
-            <h5>Attachment (if applicable) - PDF format only</h5>
-          </div>
-          <div class="card-body">
-            <div class="div">
-              <input type="file" >
-            </div>
-          </div>
-        </div>
-      </div>
-        <!-- 4th part  -->
-        <div class="row right mt-5 mb-5 p-0 m-0">
-          <button class="btn btn-primary ml-3" (click)="step4Back()">
-            <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0.571533 21.8514V1.14826C0.571533 0.825994 0.872873 0.562322 1.24118 0.562322H3.91975C4.28805 0.562322 4.58939 0.825994 4.58939 1.14826V9.76154L15.499 0.92365C16.6485 0.0886889 18.4287 0.786931 18.4287 2.12482V20.8748C18.4287 22.2127 16.6485 22.911 15.499 22.076L4.58939 13.2918V21.8514C4.58939 22.1737 4.28805 22.4373 3.91975 22.4373H1.24118C0.872873 22.4373 0.571533 22.1737 0.571533 21.8514Z"
-                fill="white" />
-            </svg>
-          </button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step4Back()">Back</button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step4()">Next</button>
-        </div>
-    </div>
-
-    <!-- new branch -->
-    <div class="modal " tabindex="-1" role="dialog" [ngStyle]="{'display':display1}">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="card">
-            <div class="card-header bg-header">
-              <div class="row">
-                <div class="col-11">
-                  <h5>Add Branch</h5>
-                </div>
-                <div class="col-1">
-                  <svg (click)="onCloseHandled2()" width="15" height="15" viewBox="0 0 15 15" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M11.8575 0.536654L7.5 4.89439C6.04758 3.44244 4.59469 1.98908 3.14203 0.536654C1.46156 -1.14381 -1.14328 1.46197 0.535781 3.1429C1.98867 4.59439 3.44203 6.04798 4.89328 7.5004C3.44137 8.95349 1.98887 10.406 0.535781 11.8579C-1.14328 13.5379 1.4618 16.143 3.14203 14.4642C4.59445 13.0113 6.04734 11.5581 7.49977 10.1062L11.8573 14.4642C13.5377 16.1442 16.1433 13.5381 14.4635 11.8579C13.0106 10.405 11.5582 8.95259 10.1048 7.49994C11.558 6.04704 13.0104 4.59415 14.4635 3.1415C16.1435 1.46197 13.538 -1.14381 11.8573 0.537592"
-                      fill="#545050" />
-                  </svg>
-
-                </div>
-              </div>
-
-            </div>
-            <div class="card-body">
-              <form [formGroup]="newbranch" class="" (ngSubmit)="saveNewBranch()">
+            <div class="col-md-12">
+              <form [formGroup]="bussinessAddress" class="" (ngSubmit)="saveBussinessAddress()">
+                <!-- ist row -->
 
                 <div class="form-row">
                   <div class="form-group col">
-                    <label for="first_name"> Address <img class="ml-1" src="/assets/req.svg"> </label>
-                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                      id="first_Address" [ngClass]="{ 'is-invalid': submitted && fbps.bussinessAddress1.errors }"
-                      placeholder=" Address" />
-                    <div *ngIf="submitted && fbps.bussinessAddress1.errors" class="invalid-feedback">
-                      <div *ngIf="fbps.bussinessAddress1.errors.required"> Address is required</div>
+                    <label for="first_name">Bussiness Address <img class="ml-1" src="/assets/req.svg" > </label>
+                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input" id="first_Address"
+                      [ngClass]="{ 'is-invalid': submitted && fb.bussinessAddress1.errors }" placeholder="Bussiness Address" />
+                    <div *ngIf="submitted && fb.bussinessAddress1.errors" class="invalid-feedback">
+                      <div *ngIf="fb.bussinessAddress1.errors.required">Bussiness Address is required</div>
                     </div>
                   </div>
 
                 </div>
                 <div class="form-row">
                   <div class="form-group col">
-                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                      id="first_Address" [ngClass]="{ 'is-invalid': submitted && fbps.bussinessAddress1.errors }"
-                      placeholder=" Address" />
-                    <div *ngIf="submitted && fbps.bussinessAddress1.errors" class="invalid-feedback">
-                      <div *ngIf="fbps.bussinessAddress1.errors.required"> Address is required</div>
+                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input" id="first_Address"
+                      [ngClass]="{ 'is-invalid': submitted && fb.bussinessAddress1.errors }" placeholder="Bussiness Address" />
+                    <div *ngIf="submitted && fb.bussinessAddress1.errors" class="invalid-feedback">
+                      <div *ngIf="fb.bussinessAddress1.errors.required">Bussiness Address is required</div>
                     </div>
                   </div>
 
                 </div>
                 <div class="form-row">
                   <div class="form-group col">
-                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input"
-                      id="first_Address" [ngClass]="{ 'is-invalid': submitted && fbps.bussinessAddress1.errors }"
-                      placeholder=" Address" />
-                    <div *ngIf="submitted && fbps.bussinessAddress1.errors" class="invalid-feedback">
-                      <div *ngIf="fbps.bussinessAddress1.errors.required"> Address is required</div>
+                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input" id="first_Address"
+                      [ngClass]="{ 'is-invalid': submitted && fb.bussinessAddress1.errors }" placeholder="Bussiness Address" />
+                    <div *ngIf="submitted && fb.bussinessAddress1.errors" class="invalid-feedback">
+                      <div *ngIf="fb.bussinessAddress1.errors.required">Bussiness Address is required</div>
                     </div>
                   </div>
                 </div>
 
 
                 <div class="form-row">
-                  <div class="form-group col">
+                     <div class="form-group col">
                     <div class="form-row">
                       <div class="form-group col">
-                        <label for="first_name">Postcode </label>
+                        <label for="first_name">Postcode <img class="ml-1" src="/assets/req.svg" > </label>
                         <input type="text" formControlName="postcode" class="form-control bg-input" id="first_name"
-                          [ngClass]="{ 'is-invalid': submitted && fbps.postcode.errors }" placeholder="Postcode" />
-                        <div *ngIf="submitted && fbps.postcode.errors" class="invalid-feedback">
-                          <div *ngIf="fbps.postcode.errors.required">Postcode is required</div>
+                          [ngClass]="{ 'is-invalid': submitted && fb.postcode.errors }" placeholder="Postcode" />
+                        <div *ngIf="submitted && fb.postcode.errors" class="invalid-feedback">
+                          <div *ngIf="fb.postcode.errors.required">Postcode is required</div>
                         </div>
                       </div>
                       <div class="form-group col">
-                        <label>Town </label>
+                        <label>Town <img class="ml-1" src="/assets/req.svg" > </label>
                         <select formControlName="town" class="form-control bg-input"
-                          [ngClass]="{ 'is-invalid': submitted && fbps.town.errors }">
+                          [ngClass]="{ 'is-invalid': submitted && fb.town.errors }">
                           <option [value]="" disabled selected>Town</option>
                           <option value="1">Male</option>
                           <option value="2">Female</option>
                         </select>
-                        <div *ngIf="submitted && fbps.town.errors" class="invalid-feedback">
-                          <div *ngIf="fbps.town.required">Town is required</div>
+                        <div *ngIf="submitted && fb.town.errors" class="invalid-feedback">
+                          <div *ngIf="fb.town.required">Town is required</div>
                         </div>
                       </div>
                     </div>
@@ -889,158 +268,228 @@
 
                 <div class="form-row">
                   <div class="form-group col">
-                    <label>State </label>
+                    <label>State <img class="ml-1" src="/assets/req.svg" > </label>
                     <select formControlName="state" class="form-control bg-input"
-                      [ngClass]="{ 'is-invalid': submitted && fbps.state.errors }">
+                      [ngClass]="{ 'is-invalid': submitted && fb.state.errors }">
                       <option [value]="" disabled selected>State</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
                     </select>
-                    <div *ngIf="submitted && fbps.state.errors" class="invalid-feedback">
-                      <div *ngIf="fbps.state.required">State is required</div>
+                    <div *ngIf="submitted && fb.state.errors" class="invalid-feedback">
+                      <div *ngIf="fb.state.required">State is required</div>
                     </div>
                   </div>
                 </div>
 
+                <div class="form-row">
+                  <div class="form-group col">
+                 <div class="form-row">
+                   <div class="form-group col">
+                     <label for="first_name">Tel No <img class="ml-1" src="/assets/req.svg" > </label>
+                     <input type="text" formControlName="telNo" class="form-control bg-input" id="first_name"
+                       [ngClass]="{ 'is-invalid': submitted && fb.telNo.errors }" placeholder="Tel No" />
+                     <div *ngIf="submitted && fb.telNo.errors" class="invalid-feedback">
+                       <div *ngIf="fb.telNo.errors.required">Tel No is required</div>
+                     </div>
+                   </div>
+                   <div class="form-group col">
+                     <label>Mobile No <img class="ml-1" src="/assets/req.svg" > </label>
+                     <select formControlName="mobileNo" class="form-control bg-input"
+                       [ngClass]="{ 'is-invalid': submitted && fb.mobileNo.errors }">
+                       <option [value]="" disabled selected>Mobile No</option>
+                       <option value="1">Male</option>
+                       <option value="2">Female</option>
+                     </select>
+                     <div *ngIf="submitted && fb.mobileNo.errors" class="invalid-feedback">
+                       <div *ngIf="fb.mobileNo.required">Mobile No is required</div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="first_name">Email <img class="ml-1" src="/assets/req.svg" > </label>
+                    <input type="text" formControlName="email" class="form-control bg-input" id="first_name"
+                      [ngClass]="{ 'is-invalid': submitted && fb.email.errors }" placeholder="Email" />
+                    <div *ngIf="submitted && fb.email.errors" class="invalid-feedback">
+                      <div *ngIf="fb.email.errors.required">Email is required</div>
+                    </div>
+                  </div>
+                </div>
 
 
                 <div class="form-row">
                   <div class="form-group col">
-                    <label for="first_name">Branch URL (Website, FB, etc) <img class="ml-1" src="/assets/req.svg">
-                    </label>
+                    <label for="first_name">URL (Website, FB, etc) <img class="ml-1" src="/assets/req.svg" > </label>
                     <input type="text" formControlName="url" class="form-control bg-input" id="first_name"
-                      [ngClass]="{ 'is-invalid': submitted && fbps.url.errors }"
-                      placeholder="Branch URL (Website, FB, etc)" />
-                    <div *ngIf="submitted && fbps.url.errors" class="invalid-feedback">
-                      <div *ngIf="fbps.url.errors.required">Branch URL (Website, FB, etc) is required</div>
+                      [ngClass]="{ 'is-invalid': submitted && fb.url.errors }" placeholder="URL (Website, FB, etc)" />
+                    <div *ngIf="submitted && fb.url.errors" class="invalid-feedback">
+                      <div *ngIf="fb.url.errors.required">URL (Website, FB, etc) is required</div>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- fifth part  -->
+
+
+
+
+      <div class="col-md-6 pr-0 m-0">
+        <div class="card p-0">
+          <div class="card-header bg-header">
+            <h5>Bussiness Address</h5>
+
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <button class="btn btn-primary ml-4"> Copy from Bussiness Address</button>
+            </div>
+            <div class="col-md-12">
+              <form [formGroup]="mailingAddress" class="" (ngSubmit)="saveMailingAddress()">
+                <!-- ist row -->
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="first_name">Bussiness Address <img class="ml-1" src="/assets/req.svg" > </label>
+                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input" id="first_Address"
+                      [ngClass]="{ 'is-invalid': submitted && fbp.bussinessAddress1.errors }" placeholder="Bussiness Address" />
+                    <div *ngIf="submitted && fbp.bussinessAddress1.errors" class="invalid-feedback">
+                      <div *ngIf="fbp.bussinessAddress1.errors.required">Bussiness Address is required</div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-row">
+                  <div class="form-group col">
+                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input" id="first_Address"
+                      [ngClass]="{ 'is-invalid': submitted && fbp.bussinessAddress1.errors }" placeholder="Bussiness Address" />
+                    <div *ngIf="submitted && fbp.bussinessAddress1.errors" class="invalid-feedback">
+                      <div *ngIf="fbp.bussinessAddress1.errors.required">Bussiness Address is required</div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-row">
+                  <div class="form-group col">
+                    <input type="text" formControlName="bussinessAddress1" class="form-control bg-input" id="first_Address"
+                      [ngClass]="{ 'is-invalid': submitted && fbp.bussinessAddress1.errors }" placeholder="Bussiness Address" />
+                    <div *ngIf="submitted && fbp.bussinessAddress1.errors" class="invalid-feedback">
+                      <div *ngIf="fbp.bussinessAddress1.errors.required">Bussiness Address is required</div>
                     </div>
                   </div>
                 </div>
 
 
-                <div class="form-row center mt-3">
-                  <button class="btn btn-cancel" (click)="onCloseHandled2()">Cancel</button>
-                  <button class="btn btn-primary ml-2" type="submit">Add</button>
+                <div class="form-row">
+                     <div class="form-group col">
+                    <div class="form-row">
+                      <div class="form-group col">
+                        <label for="first_name">Postcode <img class="ml-1" src="/assets/req.svg" > </label>
+                        <input type="text" formControlName="postcode" class="form-control bg-input" id="first_name"
+                          [ngClass]="{ 'is-invalid': submitted && fbp.postcode.errors }" placeholder="Postcode" />
+                        <div *ngIf="submitted && fbp.postcode.errors" class="invalid-feedback">
+                          <div *ngIf="fbp.postcode.errors.required">Postcode is required</div>
+                        </div>
+                      </div>
+                      <div class="form-group col">
+                        <label>Town <img class="ml-1" src="/assets/req.svg" > </label>
+                        <select formControlName="town" class="form-control bg-input"
+                          [ngClass]="{ 'is-invalid': submitted && fbp.town.errors }">
+                          <option [value]="" disabled selected>Town</option>
+                          <option value="1">Male</option>
+                          <option value="2">Female</option>
+                        </select>
+                        <div *ngIf="submitted && fbp.town.errors" class="invalid-feedback">
+                          <div *ngIf="fbp.town.required">Town is required</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label>State <img class="ml-1" src="/assets/req.svg" > </label>
+                    <select formControlName="state" class="form-control bg-input"
+                      [ngClass]="{ 'is-invalid': submitted && fbp.state.errors }">
+                      <option [value]="" disabled selected>State</option>
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+                    </select>
+                    <div *ngIf="submitted && fbp.state.errors" class="invalid-feedback">
+                      <div *ngIf="fbp.state.required">State is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                 <div class="form-row">
+                   <div class="form-group col">
+                     <label for="first_name">Tel No <img class="ml-1" src="/assets/req.svg" > </label>
+                     <input type="text" formControlName="telNo" class="form-control bg-input" id="first_name"
+                       [ngClass]="{ 'is-invalid': submitted && fbp.telNo.errors }" placeholder="Tel No" />
+                     <div *ngIf="submitted && fbp.telNo.errors" class="invalid-feedback">
+                       <div *ngIf="fbp.telNo.errors.required">Tel No is required</div>
+                     </div>
+                   </div>
+                   <div class="form-group col">
+                     <label>Mobile No <img class="ml-1" src="/assets/req.svg" > </label>
+                     <select formControlName="mobileNo" class="form-control bg-input"
+                       [ngClass]="{ 'is-invalid': submitted && fbp.mobileNo.errors }">
+                       <option [value]="" disabled selected>Mobile No</option>
+                       <option value="1">Male</option>
+                       <option value="2">Female</option>
+                     </select>
+                     <div *ngIf="submitted && fbp.mobileNo.errors" class="invalid-feedback">
+                       <div *ngIf="fbp.mobileNo.required">Mobile No is required</div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="first_name">Email <img class="ml-1" src="/assets/req.svg" > </label>
+                    <input type="text" formControlName="email" class="form-control bg-input" id="first_name"
+                      [ngClass]="{ 'is-invalid': submitted && fbp.email.errors }" placeholder="Email" />
+                    <div *ngIf="submitted && fbp.email.errors" class="invalid-feedback">
+                      <div *ngIf="fbp.email.errors.required">Email is required</div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-row specific-one">
+                  <div class="form-group col">
+                    </div>
 
 
                 </div>
               </form>
-
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
       </div>
     </div>
-    <!-- new branch -->
-    <div class="modal bd-example-modal-lg" tabindex="-1" role="dialog" [ngStyle]="{'display':display2}">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="card">
-            <div class="card-header bg-header">
-              <div class="row">
-                <div class="col-11">
-                  <h5>Add Bussiness Code</h5>
-                </div>
-                <div class="col-1">
-                  <svg (click)="onCloseHandled3()" width="15" height="15" viewBox="0 0 15 15" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M11.8575 0.536654L7.5 4.89439C6.04758 3.44244 4.59469 1.98908 3.14203 0.536654C1.46156 -1.14381 -1.14328 1.46197 0.535781 3.1429C1.98867 4.59439 3.44203 6.04798 4.89328 7.5004C3.44137 8.95349 1.98887 10.406 0.535781 11.8579C-1.14328 13.5379 1.4618 16.143 3.14203 14.4642C4.59445 13.0113 6.04734 11.5581 7.49977 10.1062L11.8573 14.4642C13.5377 16.1442 16.1433 13.5381 14.4635 11.8579C13.0106 10.405 11.5582 8.95259 10.1048 7.49994C11.558 6.04704 13.0104 4.59415 14.4635 3.1415C16.1435 1.46197 13.538 -1.14381 11.8573 0.537592"
-                      fill="#545050" />
-                  </svg>
 
-                </div>
-              </div>
+    <!-- last one  -->
 
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="row search">
-                    <div class="col-1 icon">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect width="20" height="20" fill="url(#pattern0)" />
-                        <defs>
-                          <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0" transform="scale(0.02)" />
-                          </pattern>
-                          <image id="image0" width="50" height="50"
-                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAE/ElEQVRoge2YTWxUVRTHf+fNDB8pEGirQlwAC8XED9yZIFiGajUDscWWCe20xBgx0WhCYEdCUjQh0Y0RMaZhAWno1Dw6iR8IaJhOKguSigkLF0aNCoViTSkJBmhh5h4XtDjvzZvpzLwxrUn/u/u/955zfjP3vnffhTnNaU6FJOVO7LYHVgcs87KFPqnKchV5UGAcMVcwXCFgnVm64HYqEolMVLLgfCoJpLOz03r0iboO0N3AU0VMuYGQUHR/rLn+YnklFqeiQeJ2fx0WBykOwK0JVA8FdeG+aHTd7TLmT6uiQHoS/W+IcggI+cx3IWgyjdHoC5d8xsnRtCDx46kPEd2Vp3tI4JSK/IwyIphFiqxAWY/wHBD0mHMVZFNbS/gnX5W7VBAknki+g8rB3FlyTgx7t7dsHBAR9Zpr26er01ZoN8guoMrZq7/oxLxnYrEN18sv3VVSvo7JPXEG56+aUWRPrCX8UbEJehLJlaLyOfB0tq/wbVtz+KV8P0SpsrzMzs5Oa3JjOyBAt5YCARBrrr+YvnV3PcJAti/QEO9LbS29ZG95gtx7xDqfTorsaWup/6qcJDt2vHiTCWkR+D3bF+FAKpXy2kclyxNk8j2RnfFcW/PG3L1SgtrawqMG3nbZa4ZHdbOfuFPKAem2B1bj+jfEsLcSaznWsukkyFlHAaJNfuOCB0gwkG50WUPbWzYOuMeVKxU95mzLFtu2A37jei2txx0t4WSlniwAVjB9wmEotSZUs8p33BzHyIrsphj91W+SbLU2Ngwr3Mr2NC3/AYjFckcSsf70m8QtgavOHLLYb8xcEOWmM6lZ5DeJh5yFW+aG34C5IKLD2U3FudT8qqvrfAiodZhGRvzGzQFRtS47Ddb7TZKtxcturHPlzZjx8SG/cXNAxCLpNNhg26er/Sb6N540udqD7e2Ryi+tpQtup4DswKF7p1j/su3vHkD0NYeperoSsXNAIpHIBELC6cqunkRypd9kGSu9H1iSZd2RYOCI37iQ56yl6H4g+9KgSlS+6O7+psprfDHqTSQ7FN50mMKR1qY63/sD8oDEmusvonrIZa8NVoW+jsdTtV5zCqk3kexQlcMueyyY0fdKjZVPeU6/ENSF+4DzDlOpk3k62NPXHykmeDyequ3pS32qKt3AfEcoZWc0Wn+ljJo9VfBT17aTD6ct+R7weJfIWRU9ZgXTJ1obG+6/e7q6zoeWVP/9rELj5MZekjuXMSOytr05fNmjryxNf/nQl3oMzJcgj+Qbo3DLghGFhcBD08QdA6qBvxCGAET5IWBG34pGo5kS67+v4q6Des4uY/7dzwQayk0EjKmyUy0ZtFQvADWu/t6gGe0oF6akm8ae4/2viHAAWFPCtDsCRwNG353aE/G+/h9xfy7cU9kwJd/9plKp4PCobrZEm1RkC4rXUyyDyKAaPWWFAkfdj9gCIFAmTNmX2AC2bQdMqGaVUVZiZBmWXsfIiBkfHyp07IgnkodReb1A6JJhfIGUK9u2A2mr5ihIe74xInJ8eTVt4XA4XUzMGQGBysPMGAhUFmZGQaByMDMOApWBmRUg4B9m1oCAP5i8p9+ZUDQazQTNtVeB3nxjVHXb1Wv6vtufVSAwBTPaAc6r1SkpXFIxn7j9WbW0suW1zBQuISYca37+N/f4WQsCTphCEDDLQWAKpvYDCcjHrVvDf8x0PXOa0/9V/wDvT+QlXiloNgAAAABJRU5ErkJggg==" />
-                        </defs>
-                      </svg>
-
-                    </div>
-                    <div class="col-11 p-0 m-0">
-                      <input type="text" placeholder="search" class="form-control i-s" name="" id="">
-                    </div>
-
-                  </div>
-                </div>
-                <div class="col-md-4 right">
-                  <button class="btn btn-primary">
-                    + Add Selected Code
-                  </button>
-                </div>
-              </div>
-              <!-- table  -->
-              <div class="row mt-4">
-                <table class="table table-hover">
-                  <thead class="bg-thead">
-                    <tr class="text-center">
-
-                      <th>NO</th>
-                      <th>BUSSINESSCODE</th>
-                      <th>DESCRIPTION</th>
-                      <th>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    <tr *ngFor="let item of rows | paginate: { itemsPerPage: 3, currentPage: p }" class="abc">
-                      <td>{{item.id}}</td>
-                      <td>{{item.name}}</td>
-                      <td>{{item.zip}}</td>
-
-                      <td>
-
-                        <span class="bg-icon ml-1"> <img src="/assets/del.svg" alt=""></span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="row right">
-                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-      </div>
+    <div class="row mt-5 mb-5 right">
+      <button class="btn btn-primary" type="submit">Next</button>
     </div>
+
+
+  </div>
+</div>
