@@ -13,28 +13,28 @@
     <!-- 2nd part  -->
     <div class="row p-4 top-p">
 
-      <div class="first col z-col">
+      <div class="first col z-col" (click)="step1()">
         <div class="icon-bg" [ngClass]="{selected: currentStep == 'step1'}"><img src="/assets/i.svg" alt="">
 
         </div>
         <p class="pl-4 mt-3 p-a">Main Information</p>
       </div>
-      <div class="second col z-col">
+      <div class="second col z-col" (click)="step2()">
         <div class="icon-bg" [ngClass]="{selected: currentStep == 'step2'}"><img src="/assets/b.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Branches</p>
       </div>
-      <div class="third col z-col">
+      <div class="third col z-col" (click)="step3()">
         <div class="icon-bg" [ngClass]="{selected: currentStep == 'step3'}"><img src="/assets/bc.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Bussiness Code</p>
       </div>
-      <div class="fourth col z-col">
+      <div class="fourth col z-col" (click)="step4()">
         <div class="icon-bg" [ngClass]="{selected: currentStep == 'step4'}"><img src="/assets/o.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Owner</p>
       </div>
-      <div class="fifth col z-col">
+      <div class="fifth col z-col" (click)="step5()">
         <div class="icon-bg" [ngClass]="{selected: currentStep == 'step5'}"><img src="/assets/fee.svg" alt="">
         </div>
         <p class="pl-4 mt-3 p-a">Fee & Declation</p>
@@ -500,7 +500,7 @@
       <!-- last one  -->
 
       <div class="row mt-5 mb-5 right p-0 m-0">
-        <button class="btn btn-primary btn-nb" type="submit" (click)="step1()">Next</button>
+        <button class="btn btn-primary btn-nb" type="submit" (click)="step2()">Next</button>
       </div>
 
     </div>
@@ -601,15 +601,15 @@
         </div>
         <!-- 4th part  -->
         <div class="row right mt-5 mb-5 p-0 m-0">
-          <button class="btn btn-primary ml-3" (click)="step2Back()">
+          <button class="btn btn-primary ml-3" (click)="step3Back()">
             <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M0.571533 21.8514V1.14826C0.571533 0.825994 0.872873 0.562322 1.24118 0.562322H3.91975C4.28805 0.562322 4.58939 0.825994 4.58939 1.14826V9.76154L15.499 0.92365C16.6485 0.0886889 18.4287 0.786931 18.4287 2.12482V20.8748C18.4287 22.2127 16.6485 22.911 15.499 22.076L4.58939 13.2918V21.8514C4.58939 22.1737 4.28805 22.4373 3.91975 22.4373H1.24118C0.872873 22.4373 0.571533 22.1737 0.571533 21.8514Z"
                 fill="white" />
             </svg>
           </button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step2Back()">Back</button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step2()">Next</button>
+          <button class="btn btn-primary ml-3 btn-nb" (click)="step3Back()">Back</button>
+          <button class="btn btn-primary ml-3 btn-nb" (click)="step3()">Next</button>
         </div>
       </div>
 
@@ -692,7 +692,7 @@
             </svg>
           </button>
           <button class="btn btn-primary ml-3 btn-nb" (click)="step3Back()">Back</button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step3()">Next</button>
+          <button class="btn btn-primary ml-3 btn-nb" (click)="step4()">Next</button>
         </div>
       </div>
     </div>
@@ -730,8 +730,8 @@
                 </div>
               </div>
               <div class="col-md-4 right">
-                <button class="btn btn-primary">
-                  + Add Selected Code
+                <button class="btn btn-primary" (click)="openModal4()">
+                  + Add Partner
                 </button>
               </div>
             </div>
@@ -780,7 +780,11 @@
           </div>
           <div class="card-body">
             <div class="div">
-              <input type="file" >
+
+              <form [formGroup]="demoForm">
+                <file-upload formControlName="files" [multiple]="multiple" [animation]="animation"></file-upload>
+            </form>
+
             </div>
           </div>
         </div>
@@ -795,9 +799,82 @@
             </svg>
           </button>
           <button class="btn btn-primary ml-3 btn-nb" (click)="step4Back()">Back</button>
-          <button class="btn btn-primary ml-3 btn-nb" (click)="step4()">Next</button>
+          <button class="btn btn-primary ml-3 btn-nb" (click)="step5()">Next</button>
         </div>
     </div>
+
+    <!-- 5th step  -->
+    <div class="step5" *ngIf="currentStep == 'step5'">
+      <div class="row">
+        <div class="col-md-12 card p-0">
+          <div class="card-header bg-header">
+            <h5>Fee & Declaration</h5>
+          </div>
+          <div class="card-body">
+
+            <!-- table  -->
+            <div class="row mt-4 p-5">
+              <table class="table table-hover">
+                <thead class="bg-thead">
+                  <tr class="text-center">
+                    <th>ITEM</th>
+                    <th>AMOUNT</th>
+                    <th>UNIT</th>
+                    <th>TOTAL(RM)</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr *ngFor="let item of rows | paginate: { itemsPerPage: 3, currentPage: p }" class="abc">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.zip}}</td>
+                  </tr>
+                </tbody>
+                <thead class="bg-thead">
+                  <tr class="text-center">
+                    <th></th>
+                    <th></th>
+                    <th>TOTAL AMOUNT</th>
+                    <th>310.00</th>
+                  </tr>
+                </thead>
+              </table>
+              <div class="row right">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row p-4">
+          <div class="col-1">
+            <input type="checkbox">
+          </div>
+          <div class="col-11">
+            <span class="check-instruction">I confirm that the fact and information stated in this document are true. It is an offense under section 12(1)(d) of Registration of Business Act 1956 to dishonestly makes any statement or furnishes any information to the Registrar under the provisions of this Act or of rules made thereunder whether such statement is verbal or in writing which is false in any material particular or by reason of the omission of any material particular and which is either knows or has reason to believe is false, commits an offence and shall on conviction be liable to a fine not exceeding RM150,000 or to imprisonment ofr a term not exceeding two years or to both.</span>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+
+        <!-- 4th part  -->
+        <div class="row right mt-5 mb-5 p-0 m-0">
+          <button class="btn btn-primary ml-3" (click)="step5Back()">
+            <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.571533 21.8514V1.14826C0.571533 0.825994 0.872873 0.562322 1.24118 0.562322H3.91975C4.28805 0.562322 4.58939 0.825994 4.58939 1.14826V9.76154L15.499 0.92365C16.6485 0.0886889 18.4287 0.786931 18.4287 2.12482V20.8748C18.4287 22.2127 16.6485 22.911 15.499 22.076L4.58939 13.2918V21.8514C4.58939 22.1737 4.28805 22.4373 3.91975 22.4373H1.24118C0.872873 22.4373 0.571533 22.1737 0.571533 21.8514Z"
+                fill="white" />
+            </svg>
+          </button>
+          <button class="btn btn-primary ml-3 btn-nb" (click)="step5Back()">Back</button>
+          <button class="btn btn-primary ml-3 btn-nb" (click)="step5()">Submit</button>
+        </div>
+    </div>
+
 
     <!-- new branch -->
     <div class="modal " tabindex="-1" role="dialog" [ngStyle]="{'display':display1}">
@@ -945,7 +1022,7 @@
       </div>
     </div>
     <!-- new branch -->
-    <div class="modal bd-example-modal-lg" tabindex="-1" role="dialog" [ngStyle]="{'display':display2}">
+    <div class="modal " tabindex="-1" role="dialog" [ngStyle]="{'display':display2}">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="card">
@@ -1044,3 +1121,55 @@
         </div>
       </div>
     </div>
+  <!-- new Partner -->
+  <div class="modal " tabindex="-1" role="dialog" [ngStyle]="{'display':display3}">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="card">
+          <div class="card-header bg-header">
+            <div class="row">
+              <div class="col-11">
+                <h5>Add Partner</h5>
+              </div>
+              <div class="col-1">
+                <svg (click)="onCloseHandled4()" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.8575 0.536654L7.5 4.89439C6.04758 3.44244 4.59469 1.98908 3.14203 0.536654C1.46156 -1.14381 -1.14328 1.46197 0.535781 3.1429C1.98867 4.59439 3.44203 6.04798 4.89328 7.5004C3.44137 8.95349 1.98887 10.406 0.535781 11.8579C-1.14328 13.5379 1.4618 16.143 3.14203 14.4642C4.59445 13.0113 6.04734 11.5581 7.49977 10.1062L11.8573 14.4642C13.5377 16.1442 16.1433 13.5381 14.4635 11.8579C13.0106 10.405 11.5582 8.95259 10.1048 7.49994C11.558 6.04704 13.0104 4.59415 14.4635 3.1415C16.1435 1.46197 13.538 -1.14381 11.8573 0.537592"
+                    fill="#545050" />
+                </svg>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="card-body">
+
+          <div class="row p-4">
+            <label >MyKad No <img class="ml-1" src="/assets/req.svg"> </label>
+            <input type="text" class="form-control bg-input ">
+          </div>
+          <div class="row center mt-4">
+            <button class="btn btn-cancel">Cancel</button>
+            <button class="btn btn-primary ml-3">Add</button>
+
+          </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>

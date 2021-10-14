@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FileUploadValidators } from '@iplab/ngx-file-upload';
 import { AppService } from 'src/app/services/app/app.service';
 
 @Component({
@@ -12,12 +13,20 @@ export class RegistrationComponent implements OnInit {
   bussinessAddress: FormGroup;
   mailingAddress: FormGroup;
   newbranch:FormGroup;
+  public animation: boolean = false;
+    public multiple: boolean = true;
 
+    private filesControl = new FormControl(null, FileUploadValidators.filesLimit(2));
+
+    public demoForm = new FormGroup({
+        files: this.filesControl
+    });
   submitted = false;
   currentStep = 'step1';
   p: number[] = [];
   display1 = "none"
   display2 = "none"
+  display3 = "none"
   rows: { id: string; name: string; phone: string; company: string; zip: string; city: string; date: string; country: string; }[];
   constructor(private formBuilder: FormBuilder,
     private appService: AppService) { }
@@ -93,25 +102,31 @@ export class RegistrationComponent implements OnInit {
   get fbp() { return this.mailingAddress.controls; }
   get fbps() { return this.newbranch.controls; }
   step1() {
-    this.currentStep = 'step2'
+    this.currentStep = 'step1'
   }
   step2() {
-    this.currentStep = 'step3'
+    this.currentStep = 'step2'
   }
   step2Back() {
     this.currentStep = 'step1'
   }
   step3() {
-    this.currentStep = 'step4'
+    this.currentStep = 'step3'
   }
   step3Back() {
     this.currentStep = 'step2'
+  }
+  step4() {
+    this.currentStep = 'step4'
+  }
+  step4Back() {
+    this.currentStep = 'step3'
   }
   step5() {
     this.currentStep = 'step5'
   }
   step5Back() {
-    this.currentStep = 'step3'
+    this.currentStep = 'step4'
   }
   openModal2() {
     this.display1 = "block";
@@ -125,5 +140,10 @@ export class RegistrationComponent implements OnInit {
   onCloseHandled3() {
     this.display2 = "none";
   }
-
+  openModal4() {
+    this.display3 = "block";
+  }
+  onCloseHandled4() {
+    this.display3 = "none";
+  }
 }
