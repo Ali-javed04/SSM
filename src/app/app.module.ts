@@ -15,6 +15,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
+import { NameSearchComponent } from './components/name-search/name-search.component';
+import { EntityInvolvementComponent } from './components/entity-involvement/entity-involvement.component';
+import { CorporateProfileComponent } from './components/corporate-profile/corporate-profile.component';
+import { WorkFlowComponent } from './components/work-flow/work-flow.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { FileUploadModule } from '@iplab/ngx-file-upload';
     LoginComponent,
     SidebarComponent,
     ApprovelListingComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NameSearchComponent,
+    EntityInvolvementComponent,
+    CorporateProfileComponent,
+    WorkFlowComponent
 
   ],
   imports: [

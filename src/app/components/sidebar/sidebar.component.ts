@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 export class SidebarComponent implements OnInit{
   openn : string = "";
   currenturl: string = '';
+  dropdown:boolean = false
  constructor(public router: Router) {
   }
 
@@ -123,6 +124,9 @@ export class SidebarComponent implements OnInit{
 
  currentState(url:string) : boolean {
    return this.currenturl.includes(url)
+  }
+  DropDown() {
+    this.dropdown = !this.dropdown
   }
 }
 

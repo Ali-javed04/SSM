@@ -5,7 +5,7 @@
 
 
 
-<div id="icons"  class="bg-color text-center" [ngClass]="{bgcolorR: currenturl == '/registration'}">
+<div id="icons"  class="bg-color text-center" [ngClass]="{bgcolor2R: currenturl == '/registration' && '/workFlow' }" >
   <div class="  position-fixed open-btn-p">
   </div>
 
@@ -16,20 +16,44 @@
     </a>
    </div>
    <div class="mb-4">
-    <a routerLink="/registration" >
+    <a routerLink="/registration">
       <img src="/assets/reg.svg" alt="">
     </a>
   </div>
+  <div class="mb-4">
+    <a routerLink="/workFlow">
+      <img src="/assets/reg.svg" alt="">
+    </a>
+  </div>
+
   <div class="mb-4 ">
+    <a routerLink="/approvelListing" >
+      <img src="/assets/approve.svg" alt="">
+    </a>
+  </div>
+  <div class="mb-4" (click)="DropDown()">
     <a routerLink="/search" >
       <img src="/assets/se.svg" alt="">
     </a>
   </div>
-  <div class="mb-4 ">
-    <a routerLink="/approvelListing" >
-      <img src="/assets/approve.png" alt="">
-    </a>
+  <div class="div dropdown" *ngIf="dropdown">
+    <div class="mb-4 ">
+      <a routerLink="/nameSearch" >
+        <img src="/assets/FolderListing.png" alt="">
+      </a>
+    </div>
+    <div class="mb-4 ">
+      <a routerLink="/entityInvolvement" >
+        <img src="/assets/FolderListing.png" alt="">
+      </a>
+    </div>
+    <div class="mb-4 ">
+      <a routerLink="/corporateProfile" >
+        <img src="/assets/FolderListing.png" alt="">
+      </a>
+    </div>
   </div>
+
   <div class="mb-2 setting">
     <a routerLink="/search" >
       <img src="/assets/Settings.svg" alt="">
@@ -40,7 +64,7 @@
 
 
 <!-- extended form  -->
-<div id="icons1" class="bg-color2 bs" [ngClass]="{bgcolor2R: currenturl == '/registration'}" >
+<div id="icons1" class="bg-color2 bs" [ngClass]="{bgcolor2R: currenturl == '/registration' || '/workFlow' }" >
 <div class="position-fixed open-btn-p ">
   <img src="/assets/Newfolder/Logo Merchant.svg" class=" me-3 mt-n10" height="40" alt="">
 </div>
@@ -49,27 +73,58 @@
 <a class="link2" routerLink="/" >
   <div class="d-flex mb-4 ms-4 pt-110">
     <img src="/assets/home.svg" alt="">
-        <span class="m-home link-color">Home</span>
+        <span class="m-home link-color" [ngClass]="{current: currentState('home')}">Home</span>
   </div>
 </a>
 <a class="link2" routerLink="/registration" >
   <div class="d-flex mb-4 ms-4">
     <img src="/assets/reg.svg" alt="">
-        <span class="m-home link-color">Registration</span>
+        <span class="m-home link-color" [ngClass]="{current: currentState('registration')}">Registration</span>
   </div>
 </a>
-<a class="link2"  routerLink="/search" >
+<a class="link2" routerLink="/workFlow" >
   <div class="d-flex mb-4 ms-4">
-    <img src="/assets/se.svg" alt="">
-    <span class="m-home link-color">Search</span>
+    <img src="/assets/reg.svg" alt="">
+        <span class="m-home link-color" [ngClass]="{current: currentState('workFlow')}">WorkFlow</span>
   </div>
 </a>
 <a class="link2"  routerLink="/approvelListing" >
   <div class="d-flex mb-4 ms-4">
-    <img src="/assets/approve.png" alt="">
-    <span class="m-home link-color">Approvel Listing</span>
+    <img src="/assets/approve.svg" alt="">
+    <span class="m-home link-color" [ngClass]="{current: currentState('approvelListing')}">Approvel Listing</span>
   </div>
 </a>
+<a class="link2"  routerLink="/search" (click)="DropDown()" >
+  <div class="d-flex mb-4 ms-4">
+    <img src="/assets/se.svg" alt="">
+    <span class="m-home link-color" [ngClass]="{current: currentState('search')}">Search</span>
+    <img src="/assets/up.png" class="push-right img-up" alt="" *ngIf="dropdown">
+    <img src="/assets/down.png" class="push-right img-down" alt="" *ngIf="!dropdown">
+  </div>
+</a>
+<div class="dropdown" *ngIf="dropdown">
+  <a class="link2"  routerLink="/nameSearch" >
+    <div class="d-flex mb-4 ms-4">
+      <img src="/assets/FolderListing.png" alt="">
+      <span class="m-home link-color" [ngClass]="{current: currentState('nameSearch')}"> Name Search</span>
+    </div>
+  </a>
+  <a class="link2"  routerLink="/entityInvolvement" >
+    <div class="d-flex mb-4 ms-4">
+      <img src="/assets/FolderListing.png" alt="">
+      <span class="m-home link-color" [ngClass]="{current: currentState('entityInvolvement')}">Entity Involvement</span>
+    </div>
+  </a>
+  <a class="link2"  routerLink="/corporateProfile" >
+    <div class="d-flex mb-4 ms-4">
+      <img src="/assets/FolderListing.png" alt="">
+      <span class="m-home link-color" [ngClass]="{current: currentState('corporateProfile')}">Corporate Profile</span>
+    </div>
+  </a>
+</div>
+
+
+
 <a  class="setting2 link2" routerLink="/setting" >
   <div class="d-flex mb-2 ms-4">
     <img src="/assets/Settings.svg" alt="">
