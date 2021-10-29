@@ -207,7 +207,10 @@ export class HeaderComponent implements OnInit ,DoCheck{
  }
  logout() {
    localStorage.removeItem('authenticatedByLoginToken')
+   localStorage.removeItem('userData')
    this.router.navigateByUrl('/login')
-
  }
+ public get identity() {
+    return JSON.parse(localStorage.getItem('userData'))
+}
 }

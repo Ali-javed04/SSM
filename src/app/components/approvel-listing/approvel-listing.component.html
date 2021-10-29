@@ -25,21 +25,81 @@
 
     <!-- 2nd part  -->
     <div class="row ">
-      <div class="col-3 mt-5" *ngFor="let appointment of appointments; let i = index">
+      <div class="col-3 mt-5" >
         <div class="card bg-card">
           <div class="card-body bg-card"
-            [ngClass]="{approved: appointment.status == 'approved' , pending: appointment.status =='pending', draft: appointment.status =='draft',rework: appointment.status =='rework' , reject: appointment.status =='reject'}">
+            [ngClass]="{approved: true}">
             <div class="row px-2">
               <div class="col-12 p-0 center">
-                <p class="p-0 m-0 c-white">{{appointment.name}}</p>
+                <p class="p-0 m-0 c-white">Total Approved</p>
               </div>
             </div>
-            <div class="row px-2 center">
+            <!-- <div class="row px-2 center">
               <p class="p-0 m-0 c-white">{{appointment.code}}</p>
-            </div>
+            </div> -->
             <div class="row px-2 center">
-              <p class="p-0 m-0">
-                {{appointment.total}}
+              <p class="p-0 m-0" *ngIf="summary">
+                {{summary.totalApprovedToday}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mt-5" >
+        <div class="card bg-card">
+          <div class="card-body bg-card"
+            [ngClass]="{ reject: true}">
+            <div class="row px-2">
+              <div class="col-12 p-0 center">
+                <p class="p-0 m-0 c-white">Total Rejected</p>
+              </div>
+            </div>
+            <!-- <div class="row px-2 center">
+              <p class="p-0 m-0 c-white">{{appointment.code}}</p>
+            </div> -->
+            <div class="row px-2 center">
+              <p class="p-0 m-0" *ngIf="summary">
+                {{summary.totalRejectedToday}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mt-5" >
+        <div class="card bg-card">
+          <div class="card-body bg-card"
+            [ngClass]="{rework: true}">
+            <div class="row px-2">
+              <div class="col-12 p-0 center">
+                <p class="p-0 m-0 c-white">Total Rework</p>
+              </div>
+            </div>
+            <!-- <div class="row px-2 center">
+              <p class="p-0 m-0 c-white">{{appointment.code}}</p>
+            </div> -->
+            <div class="row px-2 center">
+              <p class="p-0 m-0" *ngIf="summary">
+                {{summary.totalReworkToday}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mt-5" >
+        <div class="card bg-card">
+          <div class="card-body bg-card"
+            [ngClass]="{ pending: true }">
+            <div class="row px-2">
+              <div class="col-12 p-0 center">
+                <p class="p-0 m-0 c-white">Total Pending</p>
+              </div>
+            </div>
+            <!-- <div class="row px-2 center">
+              <p class="p-0 m-0 c-white">{{appointment.code}}</p>
+            </div> -->
+            <div class="row px-2 center">
+              <p class="p-0 m-0" *ngIf="summary">
+                {{summary.totalPending}}
               </p>
             </div>
           </div>
@@ -90,17 +150,17 @@
 
         </thead>
         <tbody class="text-center">
-          <tr *ngFor="let item of rows | paginate: { itemsPerPage: 10, currentPage: p }" class="abc">
-        <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
-        <td>{{item.zip}}</td>
+          <tr *ngFor="let item of rows | paginate: {id:'server', itemsPerPage: 10, currentPage: p , totalItems: total}" class="abc">
+        <td>{{item.appId}}</td>
+        <td>{{item.busname}}</td>
+        <td>{{item.appType}}</td>
         <td >
-          <span class="status-table" >{{item.city}}</span></td>
-        <td>{{item.date}}</td>
+          <span class="status-table" >{{item.status}}</span></td>
+        <td>{{item.submittedDate}}</td>
         <td>
           <span class="bg-icon ml-1"> <img src="/assets/Eye.svg" alt=""></span>
           <span class="bg-icon ml-1"> <img src="/assets/Pencil.svg" alt=""></span>
-          <span class="bg-icon ml-1"> <img src="/assets/lock.svg" alt=""></span>
+          <span class="bg-icon ml-1" *ngIf="item.lockInd"> <img src="/assets/lock.svg" alt=""></span>
         </td>
 
           </tr>
@@ -109,7 +169,7 @@
         </tbody>
       </table>
       <div class="row right">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
       </div>
 
 

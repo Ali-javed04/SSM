@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app/app.service';
+import { ApprovelListingService } from 'src/app/services/approvelListing/approvel-listing.service';
 @Component({
   selector: 'app-approvel-listing',
   templateUrl: './approvel-listing.component.html',
@@ -34,16 +35,42 @@ export class ApprovelListingComponent implements OnInit {
   ]
 
   p: number[] = [];
-  rows: { id: string; name: string; phone: string; company: string; zip: string; city: string; date: string; country: string; }[];
+rows:any[]
+  summary:any
+  total: number;
 
-  constructor(private appService: AppService) {
+  constructor(
+    private approvelListingService: ApprovelListingService) {
     ;
    }
 
   ngOnInit(): void {
-    this.rows = this.appService.getData()
+    this.getAllSummary()
+    this.getAllApprovelList(1,10)
   }
 
+  getAllSummary() {
+    this.approvelListingService.getSummary().subscribe((response:any)=>{
+      console.log('summary',response.summary)
+      this.summary = response.summary
+    },(error)=>{
+      console.log(error)
+    })
+  }
+  getAllApprovelList(page:number,offset:number) {
+    this.approvelListingService.getList(page,offset).subscribe((response:any)=>{
+      const abc = response.approvals
+      console.log(abc)
+      this.rows = abc.approvals.rows
+      this.total  =abc.approvalscount
+      this.p = abc.approvals.page
 
 
+    },(error)=>{
+      console.log(error)
+    })
+  }
+  getPage(page: number) {
+   this.getAllApprovelList(page,10)
+}
 }

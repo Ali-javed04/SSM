@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from 'src/app/services/authguard/home/home.service';
+import { MainHomeService } from 'src/app/services/mainHome/main-home.service';
 
 @Component({
   selector: 'app-home',
@@ -59,9 +61,10 @@ export class HomeComponent implements OnInit {
   ]
   show: number = -1;
   currentIndex: number;
-  constructor() { }
+  constructor(private homeSerivce:MainHomeService) { }
 
   ngOnInit(): void {
+    this.listApplication(1,50)
   }
   expend(i) {
     this.show = i
@@ -70,5 +73,15 @@ export class HomeComponent implements OnInit {
   contract(i) {
     this.show = -1
     this.currentIndex = i
+  }
+
+  listApplication(page:number,offset:number) {
+    this.homeSerivce.getAllapplicationList(page,offset).subscribe((response:any)=>{
+      console.log(response)
+     this.appointments =  response.applications.rows
+     console.log(this.appointments)
+    },(error)=>{
+      console.log(error)
+    })
   }
 }

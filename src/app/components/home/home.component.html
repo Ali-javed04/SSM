@@ -43,15 +43,15 @@
     <div class="row ">
       <div class="col-3 mt-5" *ngFor="let appointment of appointments; let i = index">
         <div class="card bg-card">
-          <div class="card-body bg-card" [ngClass]="{approved: appointment.status == 'approved' , pending: appointment.status =='pending', draft: appointment.status =='draft',rework: appointment.status =='rework' , reject: appointment.status =='reject'}">
+          <div class="card-body bg-card" [ngClass]="{approved: appointment.status == 'approved' , pending: appointment.status =='data_entry', draft: appointment.status =='submitted',rework: appointment.status =='rework' , reject: appointment.status =='rejected'}">
             <div class="row px-2">
               <div class="col-10 p-0">
-              <p class="p-0">{{appointment.name}}</p>
+              <p class="p-0">{{appointment.busName}}</p>
 
               </div>
               <div class="col-2">
 
-                <div class="dropdown display-d" style="float:right;" [ngClass]="{nones1:appointment.status == 'approved',nones:appointment.status == 'pending' ,nones2:appointment.status == 'reject'}">
+                <div class="dropdown display-d" style="float:right;" [ngClass]="{nones1:appointment.status == 'approved',nones:appointment.status == 'data_entry' ,nones2:appointment.status == 'rejected'}">
                   <button class="dropbtn"><img src="/assets/drop.svg" alt=""></button>
                   <div class="dropdown-content">
                   <a href="#">Edit</a>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="row px-2">
-              <p class="p-0">{{appointment.code}}</p>
+              <p class="p-0">{{appointment.busType}}</p>
             </div>
             <div class="row px-2">
                <p class="status">
@@ -73,11 +73,11 @@
 
             <!-- hide  -->
             <div class="hide" *ngIf="show == i ">
-              <div class="row" *ngIf="appointment.status == 'reject'">
+              <!-- <div class="row" *ngIf="appointment.status == 'rejected'">
                 <p>Reject Reason</p>
 
               </div>
-              <div class="row bg-rej" *ngIf="appointment.status == 'reject'">
+              <div class="row bg-rej" *ngIf="appointment.status == 'rejected'">
                 <div class="col-md-12">
                   <h5>Rejected By:{{appointment.rejectedBy}}</h5>
                 </div>
@@ -86,13 +86,13 @@
                 </div>
 
               </div>
-              <div class="row mt-3 bg-reason" *ngIf="appointment.status == 'reject'">
+              <div class="row mt-3 bg-reason" *ngIf="appointment.status == 'rejected'">
                 <h5>{{appointment.reason}}</h5>
-              </div>
+              </div> -->
 
 
             <!-- pending  -->
-            <div class="row" *ngIf="appointment.status == 'pending'">
+            <!-- <div class="row" *ngIf="appointment.status == 'data_entry'">
               <div class="col-2">
                 <img src="/assets/pending.svg" alt="">
 
@@ -114,11 +114,33 @@
                 </div>
 
               </div>
+            </div> -->
+
+            <!-- allevent -->
+            <div class="div" *ngIf="appointment.events.length">
+              <div class="row events c  text-center">Events</div>
+              <div class="row events" *ngFor="let event of appointment.events" >
+               <p> Name:<span>{{event.eventDesc}}</span></p>
+               <p>  ActionBy:<span>{{event.actionBy}}</span></p>
+                <p> Created Date: <span>{{event.createdAt}}</span></p>
+                  <p>  Modified Date: <span>{{event.modifiedAt}}</span></p>
+              </div>
             </div>
+             <!-- workFlowHistries -->
+             <div class="div" *ngIf="appointment.workflowHistories.length">
+              <div class="row works c text-center">WorkFlow</div>
+              <div class="row works" *ngFor="let work of appointment.workflowHistories" >
+               <p *ngIf="work.action"> Action:<span>{{work.action}}</span></p>
+               <p *ngIf="work.actionDate">  Action Date:<span>{{work.actionDate}}</span></p>
+                <p *ngIf="work.commentBy"> Commend By: <span>{{work.commentBy}}</span></p>
+                  <p *ngIf="comment">Comment: <span>{{work.comment}}</span></p>
+              </div>
+            </div>
+
           </div>
         </div>
 
-          <div class="card-footer center bg-card p-0 pt-2" [ngClass]="{approvedDown: appointment.status == 'approved' , pendingDown: appointment.status =='pending', draftDown: appointment.status =='draft',reworkDown: appointment.status =='rework' , rejectDown: appointment.status =='reject'}">
+          <div class="card-footer center bg-card p-0 pt-2" [ngClass]="{approvedDown: appointment.status == 'approved' , pendingDown: appointment.status =='data_entry', draftDown: appointment.status =='submitted',reworkDown: appointment.status =='rework' , rejectDown: appointment.status =='rejected'}">
             <img src="/assets/down.svg" alt="" (click)="expend(i)" *ngIf="show == -1">
             <img src="/assets/up.svg" alt="" (click)="contract(i)" *ngIf="show == i && currentIndex == i ">
           </div>

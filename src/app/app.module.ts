@@ -19,7 +19,8 @@ import { NameSearchComponent } from './components/name-search/name-search.compon
 import { EntityInvolvementComponent } from './components/entity-involvement/entity-involvement.component';
 import { CorporateProfileComponent } from './components/corporate-profile/corporate-profile.component';
 import { WorkFlowComponent } from './components/work-flow/work-flow.component';
-
+import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/intercepter/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +46,16 @@ import { WorkFlowComponent } from './components/work-flow/work-flow.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    FileUploadModule
+    FileUploadModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
